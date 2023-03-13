@@ -95,7 +95,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200
+        return 250
     }
 }
 
@@ -104,10 +104,17 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
       return 70
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 6 {
+            navigationController?.popToRootViewController(animated: true)
+        }
+    }
 }
 
 private extension ProfileViewController {
     func setupViews() {
+        title = profileViewModel.moduleTitle
         view.backgroundColor = UIColor(red: 0.98, green: 0.976, blue: 1, alpha: 1)
         tableView.backgroundColor = UIColor(red: 0.98, green: 0.976, blue: 1, alpha: 1)
         view.addSubview(tableView)
