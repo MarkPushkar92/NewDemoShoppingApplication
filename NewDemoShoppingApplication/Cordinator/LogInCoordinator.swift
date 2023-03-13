@@ -12,9 +12,10 @@ class LogInCoordinator: Coordinator {
     var coordinators: [Coordinator] = []
     let navigation: UINavigationController
     let factory: ControllerFactory
-    
-    
-    
+    private lazy var profile = {
+        factory.makeProfile()
+    }()
+        
     init(navigation: UINavigationController,factory: ControllerFactory) {
         self.navigation = navigation
         self.factory = factory
@@ -28,12 +29,12 @@ class LogInCoordinator: Coordinator {
     
     func goToProfile() {
 
-//        profile.viewModel.onShowNext = { [weak self] in
-//            guard let controller = self?.configureNext() else { return }
-//            self?.navigation.pushViewController(controller, animated: true)
-//        }
-//        
-//        navigation.pushViewController(profile.controller, animated: true)
+        profile.viewModel.onShowNext = {
+            print("hi")
+        }
+        
+        navigation.pushViewController(profile.controller, animated: true)
+        navigation.tabBarController?.tabBar.isHidden = false
     }
     
     

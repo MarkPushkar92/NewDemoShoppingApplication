@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         guard let window = window else { return }
         
-       // window.rootViewController = mainCoordinator.tabBarController
-        window.rootViewController = LogInViewController()
+        window.rootViewController = mainCoordinator.tabBarController
+     //   window.rootViewController = LogInViewController()
         window.makeKeyAndVisible()
     
        

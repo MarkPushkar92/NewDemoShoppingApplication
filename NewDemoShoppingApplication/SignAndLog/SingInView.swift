@@ -90,7 +90,7 @@ class SignInView: UIView {
         return txtfld
     }()
 
-    private let singInButton: UIButton = {
+    let singInButton: UIButton = {
         let button = UIButton()
         button.toAutoLayout()
         button.backgroundColor = UIColor(red: 0.306, green: 0.333, blue: 0.843, alpha: 1)

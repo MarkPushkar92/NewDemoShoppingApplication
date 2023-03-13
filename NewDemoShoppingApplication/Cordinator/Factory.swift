@@ -10,10 +10,15 @@
 import UIKit
 
 protocol ControllerFactory {
-   
+    func makeProfile() -> (viewModel: ProfilelViewModel, controller: ProfileViewController)
+
 }
 
 struct ControllerFactoryImpl: ControllerFactory {
-
+    
+    func makeProfile() -> (viewModel: ProfilelViewModel, controller: ProfileViewController) {
+        let viewModel = ProfilelViewModel()
+        let settingsController = ProfileViewController(profileViewModel: viewModel)
+        return (viewModel, settingsController)
+    }
 }
-
