@@ -31,6 +31,9 @@
 		63CDECA629BF1A1F00385A01 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDECA529BF1A1F00385A01 /* FeedViewController.swift */; };
 		63CDECA829BF21ED00385A01 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDECA729BF21ED00385A01 /* ProfileTableViewCell.swift */; };
 		63CDECAA29BF2F0D00385A01 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDECA929BF2F0D00385A01 /* ProfileHeaderView.swift */; };
+		63E4131629C346E000AE8562 /* SelectCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131529C346E000AE8562 /* SelectCategoryView.swift */; };
+		63E4131829C347CC00AE8562 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131729C347CC00AE8562 /* CustomButton.swift */; };
+		63E4131A29C34A3900AE8562 /* RoundButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131929C34A3900AE8562 /* RoundButtonLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		63CDECA529BF1A1F00385A01 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		63CDECA729BF21ED00385A01 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		63CDECA929BF2F0D00385A01 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		63E4131529C346E000AE8562 /* SelectCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryView.swift; sourceTree = "<group>"; };
+		63E4131729C347CC00AE8562 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		63E4131929C34A3900AE8562 /* RoundButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButtonLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				63697DB429BC5BE800BA626A /* CommonExtensions.swift */,
+				63E4131729C347CC00AE8562 /* CustomButton.swift */,
+				63E4131929C34A3900AE8562 /* RoundButtonLabel.swift */,
 			);
 			path = CustomsAndExtns;
 			sourceTree = "<group>";
@@ -142,6 +150,7 @@
 		63B58AAA29C2CBF000ABA317 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				63E4131429C346CC00AE8562 /* Views */,
 				63CDECA529BF1A1F00385A01 /* FeedViewController.swift */,
 				63B58AAB29C2CCD200ABA317 /* FeedViewModel.swift */,
 			);
@@ -167,6 +176,14 @@
 				63CDECA729BF21ED00385A01 /* ProfileTableViewCell.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		63E4131429C346CC00AE8562 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63E4131529C346E000AE8562 /* SelectCategoryView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,9 +266,11 @@
 				63697DA929BC3B9A00BA626A /* MainCordinator.swift in Sources */,
 				635F6ACC29C2F03600B5A3F8 /* NetworkFetcherService.swift in Sources */,
 				635F6AC829C2EAD800B5A3F8 /* NetworkDataFetcher .swift in Sources */,
+				63E4131A29C34A3900AE8562 /* RoundButtonLabel.swift in Sources */,
 				63B58AA929C2CB9F00ABA317 /* FeedCoordinator.swift in Sources */,
 				63697D9529BC3A2A00BA626A /* AppDelegate.swift in Sources */,
 				63B58AAC29C2CCD200ABA317 /* FeedViewModel.swift in Sources */,
+				63E4131629C346E000AE8562 /* SelectCategoryView.swift in Sources */,
 				63CDECAA29BF2F0D00385A01 /* ProfileHeaderView.swift in Sources */,
 				63CDECA329BF119D00385A01 /* ProfilelViewModel.swift in Sources */,
 				63CDECA129BF03E700385A01 /* ProfileViewController.swift in Sources */,
@@ -259,6 +278,7 @@
 				63697DB529BC5BE800BA626A /* CommonExtensions.swift in Sources */,
 				63CDECA629BF1A1F00385A01 /* FeedViewController.swift in Sources */,
 				63CDEC9D29BEFDC900385A01 /* LogInView.swift in Sources */,
+				63E4131829C347CC00AE8562 /* CustomButton.swift in Sources */,
 				63CDEC9A29BEF31100385A01 /* SingInView.swift in Sources */,
 				63697D9729BC3A2A00BA626A /* SceneDelegate.swift in Sources */,
 			);

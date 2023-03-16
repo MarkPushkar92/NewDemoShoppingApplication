@@ -17,14 +17,6 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .cyan
-       
-//        feedViewModel.networking.fetchSale { sale in
-//            print(sale)
-//        }
-        
-        feedViewModel.networking.fetchLatest { latest in
-            print(latest)
-        }
         
         
     }
