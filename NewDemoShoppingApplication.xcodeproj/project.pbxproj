@@ -18,11 +18,13 @@
 		63697DAF29BC3C9800BA626A /* LogInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63697DAE29BC3C9800BA626A /* LogInCoordinator.swift */; };
 		63697DB229BC51F900BA626A /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63697DB129BC51F900BA626A /* Factory.swift */; };
 		63697DB529BC5BE800BA626A /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63697DB429BC5BE800BA626A /* CommonExtensions.swift */; };
+		63B58AA929C2CB9F00ABA317 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B58AA829C2CB9F00ABA317 /* FeedCoordinator.swift */; };
+		63B58AAC29C2CCD200ABA317 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B58AAB29C2CCD200ABA317 /* FeedViewModel.swift */; };
 		63CDEC9A29BEF31100385A01 /* SingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDEC9929BEF31100385A01 /* SingInView.swift */; };
 		63CDEC9D29BEFDC900385A01 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDEC9C29BEFDC800385A01 /* LogInView.swift */; };
 		63CDECA129BF03E700385A01 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDECA029BF03E700385A01 /* ProfileViewController.swift */; };
 		63CDECA329BF119D00385A01 /* ProfilelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDECA229BF119D00385A01 /* ProfilelViewModel.swift */; };
-		63CDECA629BF1A1F00385A01 /* MockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDECA529BF1A1F00385A01 /* MockVC.swift */; };
+		63CDECA629BF1A1F00385A01 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDECA529BF1A1F00385A01 /* FeedViewController.swift */; };
 		63CDECA829BF21ED00385A01 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDECA729BF21ED00385A01 /* ProfileTableViewCell.swift */; };
 		63CDECAA29BF2F0D00385A01 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDECA929BF2F0D00385A01 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -41,11 +43,13 @@
 		63697DAE29BC3C9800BA626A /* LogInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCoordinator.swift; sourceTree = "<group>"; };
 		63697DB129BC51F900BA626A /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		63697DB429BC5BE800BA626A /* CommonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
+		63B58AA829C2CB9F00ABA317 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
+		63B58AAB29C2CCD200ABA317 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		63CDEC9929BEF31100385A01 /* SingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInView.swift; sourceTree = "<group>"; };
 		63CDEC9C29BEFDC800385A01 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		63CDECA029BF03E700385A01 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		63CDECA229BF119D00385A01 /* ProfilelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilelViewModel.swift; sourceTree = "<group>"; };
-		63CDECA529BF1A1F00385A01 /* MockVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVC.swift; sourceTree = "<group>"; };
+		63CDECA529BF1A1F00385A01 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		63CDECA729BF21ED00385A01 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		63CDECA929BF2F0D00385A01 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +86,7 @@
 			children = (
 				63697D9429BC3A2A00BA626A /* AppDelegate.swift */,
 				63697D9629BC3A2A00BA626A /* SceneDelegate.swift */,
+				63B58AAA29C2CBF000ABA317 /* Feed */,
 				63CDECA429BF11A300385A01 /* Profile */,
 				63697DB029BC504900BA626A /* Cordinator */,
 				63CDEC9B29BEF90000385A01 /* SignAndLog */,
@@ -99,6 +104,7 @@
 				63697DAA29BC3BAF00BA626A /* Cordinator.swift */,
 				63697DA829BC3B9A00BA626A /* MainCordinator.swift */,
 				63697DAE29BC3C9800BA626A /* LogInCoordinator.swift */,
+				63B58AA829C2CB9F00ABA317 /* FeedCoordinator.swift */,
 				63697DB129BC51F900BA626A /* Factory.swift */,
 				63697DAC29BC3BED00BA626A /* TabBarViewController.swift */,
 			);
@@ -108,10 +114,18 @@
 		63697DB329BC5BCD00BA626A /* CustomsAndExtns */ = {
 			isa = PBXGroup;
 			children = (
-				63CDECA529BF1A1F00385A01 /* MockVC.swift */,
 				63697DB429BC5BE800BA626A /* CommonExtensions.swift */,
 			);
 			path = CustomsAndExtns;
+			sourceTree = "<group>";
+		};
+		63B58AAA29C2CBF000ABA317 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				63CDECA529BF1A1F00385A01 /* FeedViewController.swift */,
+				63B58AAB29C2CCD200ABA317 /* FeedViewModel.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		63CDEC9B29BEF90000385A01 /* SignAndLog */ = {
@@ -211,13 +225,15 @@
 				63CDECA829BF21ED00385A01 /* ProfileTableViewCell.swift in Sources */,
 				63697DAB29BC3BAF00BA626A /* Cordinator.swift in Sources */,
 				63697DA929BC3B9A00BA626A /* MainCordinator.swift in Sources */,
+				63B58AA929C2CB9F00ABA317 /* FeedCoordinator.swift in Sources */,
 				63697D9529BC3A2A00BA626A /* AppDelegate.swift in Sources */,
+				63B58AAC29C2CCD200ABA317 /* FeedViewModel.swift in Sources */,
 				63CDECAA29BF2F0D00385A01 /* ProfileHeaderView.swift in Sources */,
 				63CDECA329BF119D00385A01 /* ProfilelViewModel.swift in Sources */,
 				63CDECA129BF03E700385A01 /* ProfileViewController.swift in Sources */,
 				63697DAD29BC3BED00BA626A /* TabBarViewController.swift in Sources */,
 				63697DB529BC5BE800BA626A /* CommonExtensions.swift in Sources */,
-				63CDECA629BF1A1F00385A01 /* MockVC.swift in Sources */,
+				63CDECA629BF1A1F00385A01 /* FeedViewController.swift in Sources */,
 				63CDEC9D29BEFDC900385A01 /* LogInView.swift in Sources */,
 				63CDEC9A29BEF31100385A01 /* SingInView.swift in Sources */,
 				63697D9729BC3A2A00BA626A /* SceneDelegate.swift in Sources */,

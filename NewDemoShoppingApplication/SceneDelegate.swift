@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let window = window else { return }
         
         window.rootViewController = mainCoordinator.tabBarController
-     //   window.rootViewController = LogInViewController()
+        mainCoordinator.tabBarController.selectedIndex = 4
         window.makeKeyAndVisible()
     
        

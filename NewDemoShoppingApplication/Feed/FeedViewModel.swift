@@ -1,23 +1,25 @@
 //
-//  ProfilelViewModel.swift
+//  FeedViewModel.swift
 //  NewDemoShoppingApplication
 //
-//  Created by Марк Пушкарь on 13.03.2023.
+//  Created by Марк Пушкарь on 16.03.2023.
 //
+
+
 
 import UIKit
 
-protocol ProfileOutput {
+protocol FeedOutput {
     var moduleTitle: String { get }
     var onTapShowNextModule: () -> Void { get }
 }
 
-final class ProfilelViewModel: ProfileOutput {
+final class FeedViewModel: FeedOutput {
     
-    var coordinator: LogInCoordinator?
+    var coordinator: FeedCoordinator?
     
     var moduleTitle: String {
-        return "Profile"
+        return "Trade by bata"
     }
     
     // интерфейс для отправки данных в координатор
@@ -29,10 +31,4 @@ final class ProfilelViewModel: ProfileOutput {
     }
     
 
-    lazy var logOut: () -> Void = { [weak self] in
-        self?.logOutt?()
-    }
-    
-    var logOutt: (() -> Void)?
 }
-

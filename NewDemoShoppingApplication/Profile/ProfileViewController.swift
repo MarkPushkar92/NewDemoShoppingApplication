@@ -11,6 +11,8 @@ class ProfileViewController: UIViewController {
     
     var profileViewModel: ProfilelViewModel
     
+    private let headerview = ProfileHeaderView()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
@@ -22,6 +24,35 @@ class ProfileViewController: UIViewController {
     }()
     
     private let cellID = "cellID"
+    
+    private let returnButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "arrow.left"), for: .normal)
+        button.tintColor = .black
+        button.toAutoLayout()
+        return button
+    }()
+    
+    @objc private func logout() {
+        
+        profileViewModel.logOut()
+    }
+    
+    @objc func handleTapOnHeader() {
+        let photoLibImage = UIImage(named: "photo")
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let photo = UIAlertAction(title: "Photo", style: .default) { _ in
+            self.chooseImagePicker(source: .photoLibrary)
+        }
+        photo.setValue(photoLibImage, forKey: "image")
+        photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        actionSheet.addAction(photo)
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true)
+    }
+    
+    
     
     init(profileViewModel: ProfilelViewModel) {
         self.profileViewModel = profileViewModel
@@ -36,11 +67,29 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
     }
-    
-
- 
 
 }
+
+private extension ProfileViewController {
+    func setupViews() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: returnButton)
+        returnButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        title = profileViewModel.moduleTitle
+        view.backgroundColor = UIColor(red: 0.98, green: 0.976, blue: 1, alpha: 1)
+        tableView.backgroundColor = UIColor(red: 0.98, green: 0.976, blue: 1, alpha: 1)
+        view.addSubview(tableView)
+        tableView.separatorStyle = .none
+        let constraints = [
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+}
+
 
 //MARK: EXTENSIONS
 
@@ -67,6 +116,8 @@ extension ProfileViewController: UITableViewDataSource {
         case 3:
             cell.image.image = UIImage(named: "card")
             cell.titleLabel.text = "Trade history"
+            cell.imageChevron.isHidden = false
+            cell.balanceLabel.isHidden = true
         case 4:
             cell.image.image = UIImage(named: "spinArrow")
             cell.titleLabel.text = "Restore purchases"
@@ -89,8 +140,12 @@ extension ProfileViewController: UITableViewDataSource {
     //MARK: EXTENSIONS TABLEVIEW DATA SOURCE (HEADER)
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerview = ProfileHeaderView()
-
+        let headerview = headerview
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnHeader))
+        tapRecognizer.delegate = self
+        tapRecognizer.numberOfTapsRequired = 2
+        tapRecognizer.numberOfTouchesRequired = 1
+        headerview.addGestureRecognizer(tapRecognizer)
         return headerview
     }
     
@@ -107,28 +162,36 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 6 {
-            navigationController?.popToRootViewController(animated: true)
+            logout()
         }
     }
 }
 
-private extension ProfileViewController {
-    func setupViews() {
-        title = profileViewModel.moduleTitle
-        view.backgroundColor = UIColor(red: 0.98, green: 0.976, blue: 1, alpha: 1)
-        tableView.backgroundColor = UIColor(red: 0.98, green: 0.976, blue: 1, alpha: 1)
-        view.addSubview(tableView)
-        tableView.separatorStyle = .none
-        let constraints = [
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      
-        ]
-        NSLayoutConstraint.activate(constraints)
+//MARK: EXTENSION WORKING WITH IMAGES
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
+    
+    func chooseImagePicker(source: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(source) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = source
+            present(imagePicker, animated: true)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        headerview.imageView.image = image
+        headerview.imageView.clipsToBounds = true
+        headerview.imageView.contentMode = .scaleAspectFill
+        tableView.reloadData()
+        dismiss(animated: true)
     }
 }
+
+
 
 
 

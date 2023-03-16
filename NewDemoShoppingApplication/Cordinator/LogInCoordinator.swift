@@ -28,6 +28,10 @@ class LogInCoordinator: Coordinator {
     }
     
     func goToProfile() {
+        
+        profile.viewModel.logOutt = {
+            self.navigation.popToRootViewController(animated: true)
+        }
 
         profile.viewModel.onShowNext = {
             print("hi")
@@ -37,10 +41,8 @@ class LogInCoordinator: Coordinator {
         navigation.tabBarController?.tabBar.isHidden = false
     }
     
-    
-//    private func configureNext() -> UIViewController {
-//        return
-//    }
+   
+
     
 }
 
