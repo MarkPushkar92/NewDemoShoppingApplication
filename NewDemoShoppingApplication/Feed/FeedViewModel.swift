@@ -16,6 +16,8 @@ protocol FeedOutput {
 
 final class FeedViewModel: FeedOutput {
     
+    let networking = NetworkFetcherService()
+        
     var coordinator: FeedCoordinator?
     
     var moduleTitle: String {

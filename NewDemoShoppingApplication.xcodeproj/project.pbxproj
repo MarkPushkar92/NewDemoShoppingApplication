@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		635F6AC829C2EAD800B5A3F8 /* NetworkDataFetcher .swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F6AC729C2EAD800B5A3F8 /* NetworkDataFetcher .swift */; };
+		635F6ACA29C2ED9800B5A3F8 /* NetworkingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F6AC929C2ED9800B5A3F8 /* NetworkingModel.swift */; };
+		635F6ACC29C2F03600B5A3F8 /* NetworkFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F6ACB29C2F03600B5A3F8 /* NetworkFetcherService.swift */; };
+		635F6ACE29C2F23000B5A3F8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F6ACD29C2F23000B5A3F8 /* NetworkService.swift */; };
 		63697D9529BC3A2A00BA626A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63697D9429BC3A2A00BA626A /* AppDelegate.swift */; };
 		63697D9729BC3A2A00BA626A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63697D9629BC3A2A00BA626A /* SceneDelegate.swift */; };
 		63697D9929BC3A2A00BA626A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63697D9829BC3A2A00BA626A /* LogInViewController.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		635F6AC729C2EAD800B5A3F8 /* NetworkDataFetcher .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkDataFetcher .swift"; sourceTree = "<group>"; };
+		635F6AC929C2ED9800B5A3F8 /* NetworkingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingModel.swift; sourceTree = "<group>"; };
+		635F6ACB29C2F03600B5A3F8 /* NetworkFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetcherService.swift; sourceTree = "<group>"; };
+		635F6ACD29C2F23000B5A3F8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		63697D9129BC3A2A00BA626A /* NewDemoShoppingApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewDemoShoppingApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63697D9429BC3A2A00BA626A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63697D9629BC3A2A00BA626A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +73,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		635F6AC629C2EAC400B5A3F8 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				635F6AC729C2EAD800B5A3F8 /* NetworkDataFetcher .swift */,
+				635F6ACD29C2F23000B5A3F8 /* NetworkService.swift */,
+				635F6ACB29C2F03600B5A3F8 /* NetworkFetcherService.swift */,
+				635F6AC929C2ED9800B5A3F8 /* NetworkingModel.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		63697D8829BC3A2900BA626A = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +105,7 @@
 			children = (
 				63697D9429BC3A2A00BA626A /* AppDelegate.swift */,
 				63697D9629BC3A2A00BA626A /* SceneDelegate.swift */,
+				635F6AC629C2EAC400B5A3F8 /* Networking */,
 				63B58AAA29C2CBF000ABA317 /* Feed */,
 				63CDECA429BF11A300385A01 /* Profile */,
 				63697DB029BC504900BA626A /* Cordinator */,
@@ -219,12 +239,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				635F6ACE29C2F23000B5A3F8 /* NetworkService.swift in Sources */,
 				63697DB229BC51F900BA626A /* Factory.swift in Sources */,
+				635F6ACA29C2ED9800B5A3F8 /* NetworkingModel.swift in Sources */,
 				63697DAF29BC3C9800BA626A /* LogInCoordinator.swift in Sources */,
 				63697D9929BC3A2A00BA626A /* LogInViewController.swift in Sources */,
 				63CDECA829BF21ED00385A01 /* ProfileTableViewCell.swift in Sources */,
 				63697DAB29BC3BAF00BA626A /* Cordinator.swift in Sources */,
 				63697DA929BC3B9A00BA626A /* MainCordinator.swift in Sources */,
+				635F6ACC29C2F03600B5A3F8 /* NetworkFetcherService.swift in Sources */,
+				635F6AC829C2EAD800B5A3F8 /* NetworkDataFetcher .swift in Sources */,
 				63B58AA929C2CB9F00ABA317 /* FeedCoordinator.swift in Sources */,
 				63697D9529BC3A2A00BA626A /* AppDelegate.swift in Sources */,
 				63B58AAC29C2CCD200ABA317 /* FeedViewModel.swift in Sources */,
