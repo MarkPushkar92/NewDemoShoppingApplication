@@ -34,6 +34,8 @@
 		63E4131629C346E000AE8562 /* SelectCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131529C346E000AE8562 /* SelectCategoryView.swift */; };
 		63E4131829C347CC00AE8562 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131729C347CC00AE8562 /* CustomButton.swift */; };
 		63E4131A29C34A3900AE8562 /* RoundButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131929C34A3900AE8562 /* RoundButtonLabel.swift */; };
+		63E4131C29C3505100AE8562 /* LatestTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131B29C3505100AE8562 /* LatestTableCell.swift */; };
+		63E4131E29C3505E00AE8562 /* SalesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131D29C3505E00AE8562 /* SalesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,8 @@
 		63E4131529C346E000AE8562 /* SelectCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryView.swift; sourceTree = "<group>"; };
 		63E4131729C347CC00AE8562 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		63E4131929C34A3900AE8562 /* RoundButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButtonLabel.swift; sourceTree = "<group>"; };
+		63E4131B29C3505100AE8562 /* LatestTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestTableCell.swift; sourceTree = "<group>"; };
+		63E4131D29C3505E00AE8562 /* SalesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				63E4131529C346E000AE8562 /* SelectCategoryView.swift */,
+				63E4131B29C3505100AE8562 /* LatestTableCell.swift */,
+				63E4131D29C3505E00AE8562 /* SalesTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				635F6ACE29C2F23000B5A3F8 /* NetworkService.swift in Sources */,
+				63E4131E29C3505E00AE8562 /* SalesTableViewCell.swift in Sources */,
 				63697DB229BC51F900BA626A /* Factory.swift in Sources */,
 				635F6ACA29C2ED9800B5A3F8 /* NetworkingModel.swift in Sources */,
 				63697DAF29BC3C9800BA626A /* LogInCoordinator.swift in Sources */,
@@ -277,6 +284,7 @@
 				63697DAD29BC3BED00BA626A /* TabBarViewController.swift in Sources */,
 				63697DB529BC5BE800BA626A /* CommonExtensions.swift in Sources */,
 				63CDECA629BF1A1F00385A01 /* FeedViewController.swift in Sources */,
+				63E4131C29C3505100AE8562 /* LatestTableCell.swift in Sources */,
 				63CDEC9D29BEFDC900385A01 /* LogInView.swift in Sources */,
 				63E4131829C347CC00AE8562 /* CustomButton.swift in Sources */,
 				63CDEC9A29BEF31100385A01 /* SingInView.swift in Sources */,

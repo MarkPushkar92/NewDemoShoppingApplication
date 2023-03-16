@@ -62,7 +62,9 @@ class CustomButton: UIButton {
     private func setupButton() {
     
         self.backgroundColor = .white
-        self.frame = CGRect(x: 0, y: 0, width: 71, height: 71)
+        let buttonSize: Double = 40
+
+        self.frame = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
         
         self.layer.masksToBounds = true
         self.layer.cornerRadius = self.frame.width/2

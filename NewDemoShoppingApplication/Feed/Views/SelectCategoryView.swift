@@ -25,7 +25,7 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     
     private let textfiledSubViewIcon: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "magnifyingglass")
+        image.image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysOriginal)
         image.toAutoLayout()
         return image
     }()
@@ -38,12 +38,12 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     private let furniturelabel = CustomLabel(labelName: .furniture)
     private let kidsLabel = CustomLabel(labelName: .kids)
     
-    private let phonesButton = CustomButton(buttonName: .phones)
-    private let headPhonesButton = CustomButton(buttonName: .headPhones)
-    private let gamesButton = CustomButton(buttonName: .games)
-    private let carsButton = CustomButton(buttonName: .cars)
-    private let furnitureButton = CustomButton(buttonName: .furniture)
-    private let kidsButton = CustomButton(buttonName: .kids)
+    let phonesButton = CustomButton(buttonName: .phones)
+    let headPhonesButton = CustomButton(buttonName: .headPhones)
+    let gamesButton = CustomButton(buttonName: .games)
+    let carsButton = CustomButton(buttonName: .cars)
+    let furnitureButton = CustomButton(buttonName: .furniture)
+    let kidsButton = CustomButton(buttonName: .kids)
 
         
     private let buttonStack: UIStackView = {
@@ -52,17 +52,7 @@ class SelectCategoryView: UITableViewHeaderFooterView {
         stack.axis = .horizontal
         stack.alignment = .center
         stack.distribution = .fillEqually
-        stack.spacing = 23
-        return stack
-    }()
-    
-    private let labelStack: UIStackView = {
-        let stack = UIStackView()
-        stack.toAutoLayout()
-        stack.axis = .horizontal
-        stack.alignment = .center
-        stack.distribution = .fillEqually
-        stack.spacing = 23
+        stack.spacing = 21
         return stack
     }()
 
@@ -74,13 +64,9 @@ class SelectCategoryView: UITableViewHeaderFooterView {
             buttonStack.addArrangedSubview($0)
         }
         
-        [phoneLabel, headphonesLabel, gameslabel, carsLabel, furniturelabel, kidsLabel].forEach {
-            labelStack.addArrangedSubview($0)
-        }
-        
         searchTextField.addSubview(textfiledSubViewIcon)
         
-        self.addSubviews(buttonStack, labelStack, searchTextField, furnitureButton)
+        self.addSubviews(buttonStack, searchTextField, phoneLabel, headphonesLabel, gameslabel, carsLabel, furniturelabel, kidsLabel)
         let constrains = [
             
             searchTextField.widthAnchor.constraint(equalToConstant: 300),
@@ -88,37 +74,29 @@ class SelectCategoryView: UITableViewHeaderFooterView {
             searchTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
             searchTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             
-            buttonStack.heightAnchor.constraint(equalToConstant: 100),
-            buttonStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 27),
-            buttonStack.trailingAnchor.constraint(equalTo: labelStack.trailingAnchor),
+            buttonStack.heightAnchor.constraint(equalToConstant: 50),
+            buttonStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            buttonStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
             buttonStack.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 18),
-           
-            labelStack.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 7),
-            labelStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 27),
-            
-            phonesButton.widthAnchor.constraint(equalToConstant: 71),
-            phonesButton.heightAnchor.constraint(equalToConstant: 71),
-
-            headPhonesButton.widthAnchor.constraint(equalToConstant: 71),
-            headPhonesButton.heightAnchor.constraint(equalToConstant: 71),
-
-            gamesButton.widthAnchor.constraint(equalToConstant: 71),
-            gamesButton.heightAnchor.constraint(equalToConstant: 71),
-
-            carsButton.widthAnchor.constraint(equalToConstant: 71),
-            carsButton.heightAnchor.constraint(equalToConstant: 71),
-            
-            furnitureButton.widthAnchor.constraint(equalToConstant: 71),
-            furnitureButton.heightAnchor.constraint(equalToConstant: 71),
-            
-            kidsButton.widthAnchor.constraint(equalToConstant: 71),
-            kidsButton.heightAnchor.constraint(equalToConstant: 71),
             
             textfiledSubViewIcon.widthAnchor.constraint(equalToConstant: 16),
             textfiledSubViewIcon.heightAnchor.constraint(equalToConstant: 16),
             textfiledSubViewIcon.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
-            textfiledSubViewIcon.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor, constant: 24),
+            textfiledSubViewIcon.leadingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: -24),
             
+            phoneLabel.centerXAnchor.constraint(equalTo: phonesButton.centerXAnchor),
+            headphonesLabel.centerXAnchor.constraint(equalTo: headPhonesButton.centerXAnchor),
+            gameslabel.centerXAnchor.constraint(equalTo: gamesButton.centerXAnchor),
+            carsLabel.centerXAnchor.constraint(equalTo: carsButton.centerXAnchor),
+            furniturelabel.centerXAnchor.constraint(equalTo: furnitureButton.centerXAnchor),
+            kidsLabel.centerXAnchor.constraint(equalTo: kidsButton.centerXAnchor),
+
+            phoneLabel.topAnchor.constraint(equalTo: buttonStack.bottomAnchor),
+            headphonesLabel.topAnchor.constraint(equalTo: buttonStack.bottomAnchor),
+            gameslabel.topAnchor.constraint(equalTo: buttonStack.bottomAnchor),
+            carsLabel.topAnchor.constraint(equalTo: buttonStack.bottomAnchor),
+            furniturelabel.topAnchor.constraint(equalTo: buttonStack.bottomAnchor),
+            kidsLabel.topAnchor.constraint(equalTo: buttonStack.bottomAnchor),
             
         ]
         NSLayoutConstraint.activate(constrains)
