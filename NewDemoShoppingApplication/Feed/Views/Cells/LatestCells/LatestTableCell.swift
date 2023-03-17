@@ -29,7 +29,7 @@ class LatestTableCell: UITableViewCell {
     private let viewAllLabel: UILabel = {
         var view = UILabel()
         view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
-        view.textColor = UIColor(red: 1, green: 0.429, blue: 0.304, alpha: 1)
+        view.textColor = .gray
         view.font = UIFont.systemFont(ofSize: 15)
         view.textAlignment = .center
         view.text = "View all"
@@ -55,14 +55,14 @@ class LatestTableCell: UITableViewCell {
     }
     
     private func setupViews() {
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         collectionView.toAutoLayout()
         collectionView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         collectionView.register(LatestCollectionCell.self, forCellWithReuseIdentifier: String(describing: LatestCollectionCell.self))
         collectionView.dataSource = self
         collectionView.delegate = self
         backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
-        addSubviews(viewAllLabel, latestLabel, collectionView)
+        contentView.addSubviews(viewAllLabel, latestLabel, collectionView)
         
         let constrains = [
       
@@ -96,7 +96,16 @@ extension LatestTableCell: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: LatestCollectionCell.self), for: indexPath) as! LatestCollectionCell
         let object = latest[indexPath.row]
         cell.nameLabel.text = object.name
-        cell.priceLabel.text = String(object.price)
+        let priceStr: String = {
+            var str = String(object.price)
+            if str.count >= 4 {
+                str.insert(",", at: str.index(str.endIndex, offsetBy: -3))
+            }
+            str.insert("$", at: str.startIndex)
+            return str
+        }()
+        
+        cell.priceLabel.text = priceStr
         cell.categoryLabel.text = object.category
         cell.image.load(url: URL(string: object.imageURL) ?? URL(string: "https://img.ibxk.com.br/2020/09/23/23104013057475.jpg?w=1120&h=420&mode=crop&scale=both")!)
         return cell
@@ -112,8 +121,9 @@ extension LatestTableCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let width: CGFloat = collectionView.bounds.width / 2 - 28
-        let height: CGFloat = 227
+    //    let width: CGFloat = collectionView.bounds.width / 2 - 28
+        let width: CGFloat = 114
+        let height: CGFloat = 149
         return CGSize(width: width, height: height)
     }
     

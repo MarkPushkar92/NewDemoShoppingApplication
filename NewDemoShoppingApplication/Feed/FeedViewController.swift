@@ -18,6 +18,7 @@ class FeedViewController: UIViewController {
     
     private var latestDeals = [Latest]()
 
+    private var flashSale = [FlashSale]()
     //MARK: UI props
     
     private lazy var tableView: UITableView = {
@@ -27,7 +28,7 @@ class FeedViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(LatestTableCell.self, forCellReuseIdentifier: cellIDLatest)
-        tableView.register(SalesTableViewCell.self, forCellReuseIdentifier: cellIDSale)
+        tableView.register(FlashSaleTableCell.self, forCellReuseIdentifier: cellIDSale)
         return tableView
     }()
     
@@ -57,6 +58,9 @@ class FeedViewController: UIViewController {
             if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? LatestTableCell {
                cell.collectionView.reloadData()
             }
+            if let cell1 = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? FlashSaleTableCell {
+               cell1.collectionView.reloadData()
+            }
             self.tableView.reloadData()
 
         }
@@ -70,7 +74,11 @@ class FeedViewController: UIViewController {
         setupViews()
         feedViewModel.networking.fetchLatest { latest in
             self.latestDeals = latest!.latest
-            print(latest)
+            self.applyData()
+        }
+        feedViewModel.networking.fetchSale { sale in
+            self.flashSale = sale!.flashSale
+            print(self.flashSale.count)
             self.applyData()
         }
         
@@ -124,8 +132,9 @@ extension FeedViewController: UITableViewDataSource {
             cell.selectionStyle = .none
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIDSale, for: indexPath) as! SalesTableViewCell
-      
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIDSale, for: indexPath) as! FlashSaleTableCell
+            cell.flashSale = flashSale
+            cell.selectionStyle = .none
             return cell
         }
     }

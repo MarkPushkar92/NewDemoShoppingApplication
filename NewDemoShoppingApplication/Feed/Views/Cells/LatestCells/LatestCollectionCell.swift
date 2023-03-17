@@ -22,17 +22,17 @@ class LatestCollectionCell: UICollectionViewCell {
     let button: UIButton = {
         let view = UIButton()
         view.toAutoLayout()
-        view.setImage(UIImage(systemName: "plus"), for: .normal)
-        view.backgroundColor = .gray
+        view.setImage(UIImage(systemName: "plus")?.withTintColor(.gray, renderingMode: .alwaysOriginal), for: .normal)
+        view.backgroundColor = .lightGray
         view.layer.masksToBounds = true
+        view.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         view.layer.cornerRadius = view.frame.width/2
         return view
     }()
     
     var nameLabel: UILabel = {
         var view = UILabel()
-        view.backgroundColor = .white
-        view.textColor = UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 1)
+        view.textColor = .white
         view.font = UIFont.systemFont(ofSize: 10)
         view.text = ""
         view.sizeToFit()
@@ -42,8 +42,7 @@ class LatestCollectionCell: UICollectionViewCell {
     
     var priceLabel: UILabel = {
         var view = UILabel()
-        view.backgroundColor = .white
-        view.textColor = UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 1)
+        view.textColor = .white
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .center
         view.text = ""
@@ -53,11 +52,13 @@ class LatestCollectionCell: UICollectionViewCell {
     
     var categoryLabel: UILabel = {
         var view = UILabel()
-        view.backgroundColor = .white
-        view.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-        view.font = UIFont.systemFont(ofSize: 10)
-         view.textAlignment = .center
+        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+        view.textColor = .black
+        view.font = UIFont.systemFont(ofSize: 12)
+        view.textAlignment = .center
         view.text = ""
+        view.layer.cornerRadius = 5
+        view.layer.masksToBounds = true
         view.toAutoLayout()
         return view
     }()
@@ -85,17 +86,19 @@ class LatestCollectionCell: UICollectionViewCell {
             
             button.heightAnchor.constraint(equalToConstant: 25),
             button.widthAnchor.constraint(equalToConstant: 25),
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
             
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            nameLabel.topAnchor.constraint(equalTo: priceLabel.topAnchor, constant: 17),
+            priceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            priceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
             
-            priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            priceLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            nameLabel.bottomAnchor.constraint(equalTo: priceLabel.topAnchor, constant: -17),
             
             categoryLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            categoryLabel.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: 16)
+            categoryLabel.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -16),
+        
+            categoryLabel.widthAnchor.constraint(equalToConstant: 80),
         ]
         NSLayoutConstraint.activate(constrains)
     }
