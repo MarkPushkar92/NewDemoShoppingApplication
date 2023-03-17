@@ -15,6 +15,8 @@ class FeedViewController: UIViewController {
     private var feedViewModel: FeedViewModel
     
     private let headerview = SelectCategoryView()
+    
+    private var latestDeals = [Latest]()
 
     //MARK: UI props
     
@@ -50,12 +52,27 @@ class FeedViewController: UIViewController {
         }
     }
     
+    private func applyData() {
+        DispatchQueue.main.async {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? LatestTableCell {
+               cell.collectionView.reloadData()
+            }
+            self.tableView.reloadData()
+
+        }
+    }
+    
     //MARK: Init and LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .cyan
         setupViews()
+        feedViewModel.networking.fetchLatest { latest in
+            self.latestDeals = latest!.latest
+            print(latest)
+            self.applyData()
+        }
         
         
     }
@@ -103,7 +120,8 @@ extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDLatest, for: indexPath) as! LatestTableCell
-           
+            cell.latest = latestDeals
+            cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDSale, for: indexPath) as! SalesTableViewCell
