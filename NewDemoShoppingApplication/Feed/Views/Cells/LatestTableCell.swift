@@ -123,7 +123,7 @@ extension LatestTableCell: UICollectionViewDelegateFlowLayout {
 
     //    let width: CGFloat = collectionView.bounds.width / 2 - 28
         let width: CGFloat = 114
-        let height: CGFloat = 149
+        let height: CGFloat = 170
         return CGSize(width: width, height: height)
     }
     

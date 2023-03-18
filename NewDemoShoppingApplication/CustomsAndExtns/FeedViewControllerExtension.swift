@@ -29,17 +29,15 @@ extension FeedViewController {
             return button
         }()
         
-//        let barLabel: UILabel = {
-//            let view = UILabel()
-//            view.frame = CGRect(x: 0, y: 0, width: 89, height: 19)
-//            view.textColor = UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 1)
-//            view.font = UIFont(name: "Montserrat-Bold", size: 15)
-//            view.textAlignment = .center
-//            view.text = "Trade by bata"
-//            view.toAutoLayout()
-//            return view
-//        }()
-//
+        let barLabel: UILabel = {
+            let view = UILabel()
+            view.font = UIFont(name: "Montserrat-Bold", size: 20)
+            view.textAlignment = .center
+            view.attributedText = "Trade by bata".attributedStringForPartiallyColoredText("bata", with: .init(red: 0.306, green: 0.333, blue: 0.843, alpha: 1))
+            view.toAutoLayout()
+            return view
+        }()
+
         let rightView: UIView = {
             let view = UIView()
             view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
@@ -70,6 +68,9 @@ extension FeedViewController {
         navigationController?.navigationBar.isHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightView)
+     
+        navigationItem.titleView = barLabel
+        
         rightView.addSubviews(imageView, locationLabel, imageChevronDown)
         let constrains = [
 

@@ -170,7 +170,7 @@ extension FeedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 || indexPath.row == 2 {
-            return 200
+            return 220
         } else {
             return 270
         }

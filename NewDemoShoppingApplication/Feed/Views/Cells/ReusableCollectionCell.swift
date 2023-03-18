@@ -135,11 +135,11 @@ class ReusableCollectionCell: UICollectionViewCell {
             priceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
             
             nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            nameLabel.bottomAnchor.constraint(equalTo: priceLabel.topAnchor, constant: -16),
+            nameLabel.topAnchor.constraint(equalTo: priceLabel.topAnchor, constant: -40),
             nameLabel.widthAnchor.constraint(equalToConstant: 110),
             
             categoryLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            categoryLabel.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -16),
+            categoryLabel.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -10),
             categoryLabel.widthAnchor.constraint(equalToConstant: 80),
             
             heartButton.centerYAnchor.constraint(equalTo: button.centerYAnchor),
@@ -147,7 +147,6 @@ class ReusableCollectionCell: UICollectionViewCell {
             heartButton.widthAnchor.constraint(equalToConstant: 22),
             heartButton.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -8),
 
-            
             discountImg.topAnchor.constraint(equalTo: image.topAnchor, constant: 8),
             discountImg.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
             discountImg.heightAnchor.constraint(equalToConstant: 22),

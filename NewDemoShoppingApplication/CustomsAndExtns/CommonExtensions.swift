@@ -45,3 +45,15 @@ extension UITextField {
         self.inputAccessoryView = toolBar//5
     }
 }
+
+extension String {
+
+    func attributedStringForPartiallyColoredText(_ textToFind: String, with color: UIColor) -> NSMutableAttributedString {
+        let mutableAttributedstring = NSMutableAttributedString(string: self)
+        let range = mutableAttributedstring.mutableString.range(of: textToFind, options: .caseInsensitive)
+        if range.location != NSNotFound {
+            mutableAttributedstring.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+        }
+        return mutableAttributedstring
+    }
+}
