@@ -43,17 +43,17 @@ class FeedViewController: UIViewController {
         
     }
     
-        private func getData() {
-            feedViewModel.networking.getData {  latest, sale in
-                if latest.isEmpty || sale.isEmpty {
-                    print("no data")
-                } else {
-                    self.latestDeals = latest
-                    self.flashSale = sale
-                    self.applyData()
-                }
+    private func getData() {
+        feedViewModel.networking.getData {  latest, sale in
+            if latest.isEmpty || sale.isEmpty {
+                print("no data")
+            } else {
+                self.latestDeals = latest
+                self.flashSale = sale
+                self.applyData()
             }
         }
+    }
     
     private func applyData() {
         
@@ -80,9 +80,6 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .cyan
         setupViews()
         getData()
-       
-
-        
         
     }
     
@@ -117,8 +114,12 @@ private extension FeedViewController {
      
         ]
         NSLayoutConstraint.activate(constraints)
+        setupNavigation()
     }
+    
+    
 }
+
 
 extension FeedViewController: UITableViewDataSource {
     
