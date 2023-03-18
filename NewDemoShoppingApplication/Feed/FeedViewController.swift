@@ -1,5 +1,5 @@
 //
-//  MockVC.swift
+//  FeedViewController.swift
 //  NewDemoShoppingApplication
 //
 //  Created by Марк Пушкарь on 13.03.2023.
@@ -40,26 +40,33 @@ class FeedViewController: UIViewController {
     
     @objc private func headerButtonTapped(button: CustomButton) {
         print("hi circle button")
-        if CustomButton.buttonArray.isEmpty {
-            button.backgroundColor = UIColor(red: 1, green: 0.429, blue: 0.304, alpha: 1)
-            CustomButton.buttonArray.append(button)
-        } else {
-            for i in CustomButton.buttonArray {
-                i.backgroundColor = .white
-                CustomButton.buttonArray.removeAll()
-            }
-            button.backgroundColor = UIColor(red: 1, green: 0.429, blue: 0.304, alpha: 1)
-            CustomButton.buttonArray.append(button)
-        }
+        
     }
     
+        private func getData() {
+            feedViewModel.networking.getData {  latest, sale in
+                if latest.isEmpty || sale.isEmpty {
+                    print("no data")
+                } else {
+                    self.latestDeals = latest
+                    self.flashSale = sale
+                    self.applyData()
+                }
+            }
+        }
+    
     private func applyData() {
+        
         DispatchQueue.main.async {
+           
             if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? LatestTableCell {
                cell.collectionView.reloadData()
             }
             if let cell1 = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? FlashSaleTableCell {
                cell1.collectionView.reloadData()
+            }
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? LatestTableCell {
+               cell.collectionView.reloadData()
             }
             self.tableView.reloadData()
 
@@ -72,15 +79,9 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .cyan
         setupViews()
-        feedViewModel.networking.fetchLatest { latest in
-            self.latestDeals = latest!.latest
-            self.applyData()
-        }
-        feedViewModel.networking.fetchSale { sale in
-            self.flashSale = sale!.flashSale
-            print(self.flashSale.count)
-            self.applyData()
-        }
+        getData()
+       
+
         
         
     }
@@ -99,7 +100,7 @@ class FeedViewController: UIViewController {
 
 }
 
-//MARK: EXTENSIONS
+
 
 //MARK: EXTENSIONS
 
@@ -122,13 +123,20 @@ private extension FeedViewController {
 extension FeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDLatest, for: indexPath) as! LatestTableCell
+            cell.latestLabel.text = "Latest"
             cell.latest = latestDeals
+            cell.selectionStyle = .none
+            return cell
+        } else if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIDLatest, for: indexPath) as! LatestTableCell
+            cell.latest = latestDeals
+            cell.latestLabel.text = "Brands"
             cell.selectionStyle = .none
             return cell
         } else {
@@ -160,10 +168,10 @@ extension FeedViewController: UITableViewDataSource {
 extension FeedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 300
+        if indexPath.row == 0 || indexPath.row == 2 {
+            return 200
         } else {
-            return 500
+            return 270
         }
     }
 }

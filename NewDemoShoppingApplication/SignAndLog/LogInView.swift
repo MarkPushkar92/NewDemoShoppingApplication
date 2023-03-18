@@ -12,6 +12,7 @@ class LogInView: UIView {
     private let welcomeBackLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome back"
+        label.font = UIFont(name: "Montserrat-Medium", size: 26)
         label.toAutoLayout()
         return label
     }()
@@ -24,7 +25,7 @@ class LogInView: UIView {
         txtfld.layer.borderColor = UIColor.lightGray.cgColor
         txtfld.layer.borderWidth = 0.5
         txtfld.layer.cornerRadius = 10
-        txtfld.font = .systemFont(ofSize: 16)
+        txtfld.font = UIFont(name: "Montserrat-Regular", size: 16)
         txtfld.textAlignment = .center
         return txtfld
     }()
@@ -37,7 +38,7 @@ class LogInView: UIView {
         txtfld.layer.borderColor = UIColor.lightGray.cgColor
         txtfld.layer.borderWidth = 0.5
         txtfld.layer.cornerRadius = 10
-        txtfld.font = .systemFont(ofSize: 16)
+        txtfld.font = UIFont(name: "Montserrat-Regular", size: 16)
         txtfld.textAlignment = .center
         return txtfld
     }()
@@ -47,6 +48,7 @@ class LogInView: UIView {
         button.toAutoLayout()
         button.backgroundColor = UIColor(red: 0.306, green: 0.333, blue: 0.843, alpha: 1)
         button.setTitle("Sign In", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: 18)
         button.layer.cornerRadius = 15
         return button
     }()

@@ -11,7 +11,8 @@ class SignInView: UIView {
     
     private let singInLabel: UILabel = {
         let label = UILabel()
-        label.text = "Sign In"
+        label.text = "Sign in"
+        label.font = UIFont(name: "Montserrat-Medium", size: 26)
         label.toAutoLayout()
         return label
     }()
@@ -19,6 +20,7 @@ class SignInView: UIView {
     private let googleLabel: UILabel = {
         let label = UILabel()
         label.text = "Sign in with Google"
+        label.font = UIFont(name: "Montserrat-Medium", size: 16)
         label.toAutoLayout()
         return label
     }()
@@ -26,6 +28,7 @@ class SignInView: UIView {
     private let appleLabel: UILabel = {
         let label = UILabel()
         label.text = "Sign in with Apple"
+        label.font = UIFont(name: "Montserrat-Medium", size: 16)
         label.toAutoLayout()
         return label
     }()
@@ -36,7 +39,8 @@ class SignInView: UIView {
         label.textColor = .lightGray
         label.toAutoLayout()
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 12)
+        label.font = UIFont(name: "Montserrat-Medium", size: 10)
+
         return label
     }()
     
@@ -46,7 +50,7 @@ class SignInView: UIView {
         label.textColor = .lightGray
         label.toAutoLayout()
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 12)
+        label.font = UIFont(name: "Montserrat-Medium", size: 12)
         label.textColor = .blue
         return label
     }()
@@ -59,7 +63,7 @@ class SignInView: UIView {
         txtfld.layer.borderColor = UIColor.lightGray.cgColor
         txtfld.layer.borderWidth = 0.5
         txtfld.layer.cornerRadius = 10
-        txtfld.font = .systemFont(ofSize: 16)
+        txtfld.font = UIFont(name: "Montserrat-Regular", size: 16)
         txtfld.textAlignment = .center
         return txtfld
     }()
@@ -72,7 +76,7 @@ class SignInView: UIView {
         txtfld.layer.borderColor = UIColor.lightGray.cgColor
         txtfld.layer.borderWidth = 0.5
         txtfld.layer.cornerRadius = 10
-        txtfld.font = .systemFont(ofSize: 16)
+        txtfld.font = UIFont(name: "Montserrat-Regular", size: 16)
         txtfld.textAlignment = .center
         return txtfld
     }()
@@ -85,7 +89,7 @@ class SignInView: UIView {
         txtfld.layer.borderColor = UIColor.lightGray.cgColor
         txtfld.layer.borderWidth = 0.5
         txtfld.layer.cornerRadius = 10
-        txtfld.font = .systemFont(ofSize: 16)
+        txtfld.font = UIFont(name: "Montserrat-Regular", size: 16)
         txtfld.textAlignment = .center
         return txtfld
     }()
@@ -94,7 +98,8 @@ class SignInView: UIView {
         let button = UIButton()
         button.toAutoLayout()
         button.backgroundColor = UIColor(red: 0.306, green: 0.333, blue: 0.843, alpha: 1)
-        button.setTitle("Sign In", for: .normal)
+        button.setTitle("Sign in", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: 18)
         button.layer.cornerRadius = 15
         return button
     }()

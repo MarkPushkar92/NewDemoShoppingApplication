@@ -11,7 +11,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     private let profileNameLabel: UILabel! = {
         let profileNameLabel = UILabel()
-        profileNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        profileNameLabel.font = UIFont(name: "Montserrat-Bold", size: 18)
         profileNameLabel.textColor = .label
         profileNameLabel.text = "Satria Adhi Pradana"
         profileNameLabel.toAutoLayout()
@@ -20,7 +20,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     private let changePhotoLabel: UILabel! = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = UIFont(name: "Montserrat-Regular", size: 12)
         label.textColor = .gray
         label.text = "Change photo"
         label.toAutoLayout()
@@ -43,6 +43,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         let button = UIButton()
         button.toAutoLayout()
         button.backgroundColor = UIColor(red: 0.306, green: 0.333, blue: 0.843, alpha: 1)
+        button.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: 18)
         button.setTitle("Upload Item", for: .normal)
         button.layer.cornerRadius = 15
         return button

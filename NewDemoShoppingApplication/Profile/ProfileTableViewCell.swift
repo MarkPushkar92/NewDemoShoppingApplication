@@ -22,6 +22,7 @@ class ProfileTableViewCell: UITableViewCell {
         let label = UILabel()
         label.toAutoLayout()
         label.text = "hi"
+        label.font = UIFont(name: "Montserrat-Medium", size: 14)
         return label
     }()
     
@@ -37,6 +38,7 @@ class ProfileTableViewCell: UITableViewCell {
         let label = UILabel()
         label.toAutoLayout()
         label.text = "$ 1593"
+        label.font = UIFont(name: "Montserrat-Medium", size: 18)
         label.isHidden = true
         return label
     }()
@@ -60,13 +62,13 @@ class ProfileTableViewCell: UITableViewCell {
         let constraints = [
             image.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             image.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            image.heightAnchor.constraint(equalToConstant: 65),
-            image.widthAnchor.constraint(equalToConstant: 65),
+            image.heightAnchor.constraint(equalToConstant: 50),
+            image.widthAnchor.constraint(equalToConstant: 50),
             
             imageChevron.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             imageChevron.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            imageChevron.heightAnchor.constraint(equalToConstant: 25),
-            imageChevron.widthAnchor.constraint(equalToConstant: 25),
+            imageChevron.heightAnchor.constraint(equalToConstant: 15),
+            imageChevron.widthAnchor.constraint(equalToConstant: 15),
             
             titleLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 20),
             titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),

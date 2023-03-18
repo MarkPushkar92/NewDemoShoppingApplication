@@ -51,7 +51,7 @@ private extension LogInViewController {
                     signInView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 ]
                 NSLayoutConstraint.activate(constraints)
-        
+//
 //        view.addSubview(logInView)
 //                let constraints = [
 //                    logInView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -61,7 +61,7 @@ private extension LogInViewController {
 //                ]
 //                NSLayoutConstraint.activate(constraints)
 //
-    }
+   }
     
 }
 

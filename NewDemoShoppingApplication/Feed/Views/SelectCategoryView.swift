@@ -19,6 +19,7 @@ class SelectCategoryView: UITableViewHeaderFooterView {
         textfield.textColor = UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 0.5)
         textfield.clipsToBounds = false
         textfield.layer.cornerRadius = 15
+        textfield.font = UIFont(name: "Montserrat-Regular", size: 12)
         textfield.toAutoLayout()
         return textfield
     }()

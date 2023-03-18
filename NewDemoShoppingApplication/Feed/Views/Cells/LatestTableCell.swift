@@ -15,11 +15,11 @@ class LatestTableCell: UITableViewCell {
     
     var latest: [Latest] = []
     
-    private let latestLabel: UILabel = {
+    let latestLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 25)
+        label.font = UIFont(name: "Montserrat-Bold", size: 25)
         label.textAlignment = .center
         label.text = "Latest"
         label.toAutoLayout()
@@ -30,7 +30,7 @@ class LatestTableCell: UITableViewCell {
         var view = UILabel()
         view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         view.textColor = .gray
-        view.font = UIFont.systemFont(ofSize: 15)
+        view.font = UIFont(name: "Montserrat-Regular", size: 15)
         view.textAlignment = .center
         view.text = "View all"
         view.toAutoLayout()
@@ -58,7 +58,7 @@ class LatestTableCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         collectionView.toAutoLayout()
         collectionView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
-        collectionView.register(LatestCollectionCell.self, forCellWithReuseIdentifier: String(describing: LatestCollectionCell.self))
+        collectionView.register(ReusableCollectionCell.self, forCellWithReuseIdentifier: String(describing: ReusableCollectionCell.self))
         collectionView.dataSource = self
         collectionView.delegate = self
         backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
@@ -76,7 +76,7 @@ class LatestTableCell: UITableViewCell {
             
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: latestLabel.bottomAnchor, constant: 10),
+            collectionView.topAnchor.constraint(equalTo: latestLabel.bottomAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constrains)
@@ -93,7 +93,7 @@ extension LatestTableCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: LatestCollectionCell.self), for: indexPath) as! LatestCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ReusableCollectionCell.self), for: indexPath) as! ReusableCollectionCell
         let object = latest[indexPath.row]
         cell.nameLabel.text = object.name
         let priceStr: String = {
@@ -132,7 +132,7 @@ extension LatestTableCell: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 12, left: 14, bottom: 12, right: 14)
+        return UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
     }
 }
 

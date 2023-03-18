@@ -39,10 +39,9 @@ class CustomLabel: UILabel {
             labeltext = "Kids"
         }
         
-       // self.frame = CGRect(x: 0, y: 0, width: 50, height: 15)
         self.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         self.textColor = UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 1)
-        self.font = UIFont.systemFont(ofSize: 8)
+        self.font = UIFont(name: "Montserrat-Regular", size: 8)
         self.textAlignment = .center
         self.text = labeltext
         self.toAutoLayout()

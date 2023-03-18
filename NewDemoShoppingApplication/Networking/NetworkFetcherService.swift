@@ -23,5 +23,24 @@ class NetworkFetcherService {
     }
     
     
+    func getData(completion: @escaping ([Latest], [FlashSale]) -> Void) {
+        
+        var latestDeals = [Latest]()
+        var flashSale = [FlashSale]()
+
+        fetchLatest { latest in
+            guard let latest = latest else {return}
+            latestDeals = latest.latest
+            completion(latestDeals, flashSale)
+
+        }
+        fetchSale { sale in
+            guard let sale = sale else {return}
+            flashSale = sale.flashSale
+            completion(latestDeals, flashSale)
+
+        }
+     
+    }
     
 }
