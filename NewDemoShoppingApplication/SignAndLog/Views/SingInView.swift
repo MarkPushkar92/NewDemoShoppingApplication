@@ -44,16 +44,6 @@ class SignInView: UIView {
         return label
     }()
     
-//    private let logInLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "Log In"
-//        label.toAutoLayout()
-//        label.textAlignment = .left
-//        label.font = UIFont(name: "Montserrat-Medium", size: 12)
-//        label.textColor = .blue
-//        return label
-//    }()
-    
     let logInLabel: UIButton = {
         let label = UIButton()
         label.setTitle("Log In", for: .normal)
@@ -63,7 +53,7 @@ class SignInView: UIView {
         return label
     }()
 
-    private let email: UITextField = {
+    let email: UITextField = {
         let txtfld = UITextField()
         txtfld.placeholder = "Email"
         txtfld.toAutoLayout()
@@ -76,7 +66,7 @@ class SignInView: UIView {
         return txtfld
     }()
 
-    private let firstName: UITextField = {
+    let firstName: UITextField = {
         let txtfld = UITextField()
         txtfld.placeholder = "First name"
         txtfld.toAutoLayout()
@@ -89,7 +79,7 @@ class SignInView: UIView {
         return txtfld
     }()
 
-    private let lastName: UITextField = {
+    let lastName: UITextField = {
         let txtfld = UITextField()
         txtfld.placeholder = "Last name"
         txtfld.toAutoLayout()

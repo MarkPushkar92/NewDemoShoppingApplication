@@ -12,17 +12,20 @@ class LogInCoordinator: Coordinator {
     var coordinators: [Coordinator] = []
     let navigation: UINavigationController
     let factory: ControllerFactory
+    let coreDataStack: CoreDataStack
+
     private lazy var profile = {
         factory.makeProfile()
     }()
         
-    init(navigation: UINavigationController,factory: ControllerFactory) {
+    init(navigation: UINavigationController,factory: ControllerFactory, coreDataStack: CoreDataStack) {
         self.navigation = navigation
         self.factory = factory
+        self.coreDataStack = coreDataStack
     }
     
     func start() {
-        let logInVC = SignInViewController()
+        let logInVC = SignInViewController(stack: coreDataStack)
         logInVC.coordinator = self
         navigation.pushViewController(logInVC, animated: true)
     }
@@ -42,7 +45,7 @@ class LogInCoordinator: Coordinator {
     }
     
     func goToLogIN() {
-        let logInVC = LoginViewController()
+        let logInVC = LoginViewController(stack: coreDataStack)
         logInVC.coordinator = self
         navigation.pushViewController(logInVC, animated: true)
     }

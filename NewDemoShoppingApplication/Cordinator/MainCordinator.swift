@@ -13,6 +13,9 @@ class MainCoordinator: Coordinator {
     var coordinators: [Coordinator] = []
     let tabBarController: TabBarViewController
     let factory = ControllerFactoryImpl()
+    lazy var coreDataStack = CoreDataStack()
+    
+
 
     init() {
         tabBarController = TabBarViewController()
@@ -34,7 +37,7 @@ class MainCoordinator: Coordinator {
         let image = UIImage.init(systemName: "person")
         let selectedImage = UIImage(systemName: "person.circle")
         navigation.tabBarItem = UITabBarItem(title: "", image: image?.withTintColor(.darkGray), selectedImage: selectedImage?.withTintColor(.darkGray, renderingMode: .alwaysOriginal))
-        let coordinator = LogInCoordinator(navigation: navigation, factory: factory)
+        let coordinator = LogInCoordinator(navigation: navigation, factory: factory, coreDataStack: coreDataStack)
         tabBarController.tabBar.isHidden = true
         return coordinator
     }
