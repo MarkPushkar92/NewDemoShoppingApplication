@@ -22,7 +22,7 @@ class LogInCoordinator: Coordinator {
     }
     
     func start() {
-        let logInVC = LogInViewController()
+        let logInVC = SignInViewController()
         logInVC.coordinator = self
         navigation.pushViewController(logInVC, animated: true)
     }
@@ -41,6 +41,11 @@ class LogInCoordinator: Coordinator {
         navigation.tabBarController?.tabBar.isHidden = false
     }
     
+    func goToLogIN() {
+        let logInVC = LoginViewController()
+        logInVC.coordinator = self
+        navigation.pushViewController(logInVC, animated: true)
+    }
    
 
     

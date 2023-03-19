@@ -41,6 +41,7 @@
 		63E4131829C347CC00AE8562 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131729C347CC00AE8562 /* CustomButton.swift */; };
 		63E4131A29C34A3900AE8562 /* RoundButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131929C34A3900AE8562 /* RoundButtonLabel.swift */; };
 		63E4131C29C3505100AE8562 /* LatestTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4131B29C3505100AE8562 /* LatestTableCell.swift */; };
+		63F6421629C70D0B00A19846 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F6421529C70D0B00A19846 /* SignViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		63E4131729C347CC00AE8562 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		63E4131929C34A3900AE8562 /* RoundButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButtonLabel.swift; sourceTree = "<group>"; };
 		63E4131B29C3505100AE8562 /* LatestTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestTableCell.swift; sourceTree = "<group>"; };
+		63F6421529C70D0B00A19846 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63371B2029C72366006E5539 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63CDEC9C29BEFDC800385A01 /* LogInView.swift */,
+				63CDEC9929BEF31100385A01 /* SingInView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		635F6AC629C2EAC400B5A3F8 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,8 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				63697D9829BC3A2A00BA626A /* LogInViewController.swift */,
-				63CDEC9C29BEFDC800385A01 /* LogInView.swift */,
-				63CDEC9929BEF31100385A01 /* SingInView.swift */,
+				63F6421529C70D0B00A19846 /* SignViewController.swift */,
+				63371B2029C72366006E5539 /* Views */,
 			);
 			path = SignAndLog;
 			sourceTree = "<group>";
@@ -304,6 +315,7 @@
 				63697D9929BC3A2A00BA626A /* LogInViewController.swift in Sources */,
 				63CDECA829BF21ED00385A01 /* ProfileTableViewCell.swift in Sources */,
 				63A0989029C5CCB9009ED924 /* FeedViewControllerExtension.swift in Sources */,
+				63F6421629C70D0B00A19846 /* SignViewController.swift in Sources */,
 				63697DAB29BC3BAF00BA626A /* Cordinator.swift in Sources */,
 				63697DA929BC3B9A00BA626A /* MainCordinator.swift in Sources */,
 				635F6ACC29C2F03600B5A3F8 /* NetworkFetcherService.swift in Sources */,

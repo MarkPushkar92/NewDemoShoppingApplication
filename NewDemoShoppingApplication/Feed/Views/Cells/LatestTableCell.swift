@@ -121,7 +121,6 @@ extension LatestTableCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-    //    let width: CGFloat = collectionView.bounds.width / 2 - 28
         let width: CGFloat = 114
         let height: CGFloat = 170
         return CGSize(width: width, height: height)

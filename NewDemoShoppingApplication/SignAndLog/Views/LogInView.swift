@@ -43,11 +43,11 @@ class LogInView: UIView {
         return txtfld
     }()
     
-    let singInButton: UIButton = {
+    let loginButton: UIButton = {
         let button = UIButton()
         button.toAutoLayout()
         button.backgroundColor = UIColor(red: 0.306, green: 0.333, blue: 0.843, alpha: 1)
-        button.setTitle("Sign In", for: .normal)
+        button.setTitle("Login", for: .normal)
         button.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: 18)
         button.layer.cornerRadius = 15
         return button
@@ -63,7 +63,7 @@ class LogInView: UIView {
     
     private func setupViews() {
         self.toAutoLayout()
-        self.addSubviews(firstName, welcomeBackLabel, password, singInButton, isSecureButton)
+        self.addSubviews(firstName, welcomeBackLabel, password, loginButton, isSecureButton)
         [firstName, password].forEach {
             $0.addDoneButton(title: "Done", target: self, selector:  #selector(tapDone(sender:)))
         }
@@ -85,10 +85,10 @@ class LogInView: UIView {
             password.heightAnchor.constraint(equalToConstant: 29),
 
            
-            singInButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 35),
-            singInButton.leadingAnchor.constraint(equalTo: firstName.leadingAnchor),
-            singInButton.trailingAnchor.constraint(equalTo: firstName.trailingAnchor),
-            singInButton.heightAnchor.constraint(equalToConstant: 46),
+            loginButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 35),
+            loginButton.leadingAnchor.constraint(equalTo: firstName.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: firstName.trailingAnchor),
+            loginButton.heightAnchor.constraint(equalToConstant: 46),
             
             isSecureButton.centerYAnchor.constraint(equalTo: password.centerYAnchor),
             isSecureButton.heightAnchor.constraint(equalTo: password.heightAnchor, constant: -5),

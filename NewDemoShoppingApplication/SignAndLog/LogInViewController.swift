@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LogInViewController: UIViewController {
+class SignInViewController: UIViewController {
 
 //MARK: properties
 
@@ -15,7 +15,6 @@ class LogInViewController: UIViewController {
     
     private let signInView = SignInView()
     
-    private let logInView = LogInView()
 
 //MARK: life Cycle
 
@@ -32,16 +31,22 @@ class LogInViewController: UIViewController {
     @objc private func signInbuttonTapped() {
         self.coordinator?.goToProfile()
     }
+    
+    @objc private func logInbuttonTapped() {
+        self.coordinator?.goToLogIN()
+    }
    
 }
 
 //MARK: Layout
 
-private extension LogInViewController {
+private extension SignInViewController {
     
     func setupViews() {
         view.backgroundColor = .white
         
+        
+        signInView.logInLabel.addTarget(self, action: #selector(logInbuttonTapped), for: .touchUpInside)
         signInView.singInButton.addTarget(self, action: #selector(signInbuttonTapped), for: .touchUpInside)
         view.addSubview(signInView)
                 let constraints = [
@@ -51,16 +56,7 @@ private extension LogInViewController {
                     signInView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 ]
                 NSLayoutConstraint.activate(constraints)
-//
-//        view.addSubview(logInView)
-//                let constraints = [
-//                    logInView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//                    logInView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//                    logInView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//                    logInView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//                ]
-//                NSLayoutConstraint.activate(constraints)
-//
+
    }
     
 }

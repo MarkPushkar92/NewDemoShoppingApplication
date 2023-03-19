@@ -44,14 +44,22 @@ class SignInView: UIView {
         return label
     }()
     
-    private let logInLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Log In"
-        label.textColor = .lightGray
+//    private let logInLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "Log In"
+//        label.toAutoLayout()
+//        label.textAlignment = .left
+//        label.font = UIFont(name: "Montserrat-Medium", size: 12)
+//        label.textColor = .blue
+//        return label
+//    }()
+    
+    let logInLabel: UIButton = {
+        let label = UIButton()
+        label.setTitle("Log In", for: .normal)
         label.toAutoLayout()
-        label.textAlignment = .left
-        label.font = UIFont(name: "Montserrat-Medium", size: 12)
-        label.textColor = .blue
+        label.titleLabel?.font = UIFont(name: "Montserrat-Medium", size: 12) ?? UIFont.systemFont(ofSize: 12)
+        label.setTitleColor(.blue, for: .normal)
         return label
     }()
 
@@ -153,7 +161,10 @@ class SignInView: UIView {
             alreadyHaveLabel.topAnchor.constraint(equalTo: singInButton.bottomAnchor, constant: 17),
             alreadyHaveLabel.leadingAnchor.constraint(equalTo: singInButton.leadingAnchor),
             
-            logInLabel.topAnchor.constraint(equalTo: alreadyHaveLabel.topAnchor),
+//            logInLabel.topAnchor.constraint(equalTo: alreadyHaveLabel.topAnchor),
+//            logInLabel.leadingAnchor.constraint(equalTo: alreadyHaveLabel.trailingAnchor, constant: 9),
+            
+            logInLabel.centerYAnchor.constraint(equalTo: alreadyHaveLabel.centerYAnchor),
             logInLabel.leadingAnchor.constraint(equalTo: alreadyHaveLabel.trailingAnchor, constant: 9),
             
             googleLabel.topAnchor.constraint(equalTo: singInButton.bottomAnchor, constant: 110),
