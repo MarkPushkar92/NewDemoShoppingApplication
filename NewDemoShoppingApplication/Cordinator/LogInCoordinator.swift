@@ -25,7 +25,7 @@ class LogInCoordinator: Coordinator {
     }
     
     func start() {
-        let logInVC = SignInViewController(stack: coreDataStack)
+        let logInVC = SignInViewController(delegate: SignInInspector(stack: coreDataStack))
         logInVC.coordinator = self
         navigation.pushViewController(logInVC, animated: true)
     }
