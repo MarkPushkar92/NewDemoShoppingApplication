@@ -17,7 +17,7 @@ class LogInView: UIView {
         return label
     }()
 
-    private let firstName: UITextField = {
+    let firstName: UITextField = {
         let txtfld = UITextField()
         txtfld.placeholder = "First name"
         txtfld.toAutoLayout()
@@ -30,7 +30,7 @@ class LogInView: UIView {
         return txtfld
     }()
 
-    private let password: UITextField = {
+    let password: UITextField = {
         let txtfld = UITextField()
         txtfld.placeholder = "Password"
         txtfld.toAutoLayout()

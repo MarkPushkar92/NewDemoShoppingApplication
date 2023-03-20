@@ -16,18 +16,17 @@ class LoginViewController: UIViewController {
 
     private let logInView = LogInView()
 
-    let coreDataStack: CoreDataStack
-
-    var userArray = [UserModel]()
-
+    private let delegate: SignINDelegate
+    
+    private var users = [UserModel]()
+    
 //MARK: init
-
-
-    init(stack: CoreDataStack) {
-        self.coreDataStack = stack
+    
+    init(delegate: SignINDelegate) {
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -38,7 +37,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        userArray = coreDataStack.fetchTasks()
+        users = delegate.coreDataStack.fetchTasks()
 
     }
 
@@ -48,7 +47,26 @@ class LoginViewController: UIViewController {
     }
 
     @objc private func logInbuttonTapped() {
-        self.coordinator?.goToProfile()
+        
+        var userIsFound = false
+
+        for user in users {
+            if logInView.firstName.text == user.name && logInView.password.text == user.password  {
+                userIsFound = true
+                self.coordinator?.goToProfile()
+            }
+        }
+        
+        if userIsFound == false {
+    
+            let alert = UIAlertController(title: "Try again", message: "Wrong name, password or used doesn't exist", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            
+        }
+        
+        
     }
 
 }

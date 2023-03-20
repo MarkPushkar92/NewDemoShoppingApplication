@@ -58,7 +58,7 @@ class CoreDataStack {
         save(context: viewContext)
     }
     
-    func createNewUser(name: String?, lastName: String?, email: String?, password: String?) {
+    func createNewUser(name: String, lastName: String, email: String, password: String) {
         let context = persistentContainer.viewContext
         let newUser = UserModel(context: context)
         newUser.name = name
