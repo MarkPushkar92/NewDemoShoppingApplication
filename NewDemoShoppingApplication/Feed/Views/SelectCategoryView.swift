@@ -11,7 +11,7 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     
     //MARK: Properties
     
-    private let searchTextField: UITextField = {
+    let searchTextField: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "What are you looking for?"
         textfield.backgroundColor = .white
@@ -23,7 +23,7 @@ class SelectCategoryView: UITableViewHeaderFooterView {
         textfield.toAutoLayout()
         return textfield
     }()
-    
+
     private let textfiledSubViewIcon: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysOriginal)
@@ -60,31 +60,31 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     //MARK: Methods
     
     private func setupViews() {
-        
+
         [phonesButton, headPhonesButton, gamesButton, carsButton, furnitureButton, kidsButton].forEach {
             buttonStack.addArrangedSubview($0)
         }
-        
+
         searchTextField.addSubview(textfiledSubViewIcon)
-        
+
         self.addSubviews(buttonStack, searchTextField, phoneLabel, headphonesLabel, gameslabel, carsLabel, furniturelabel, kidsLabel)
         let constrains = [
-            
+
             searchTextField.widthAnchor.constraint(equalToConstant: 300),
             searchTextField.heightAnchor.constraint(equalToConstant: 34),
             searchTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
             searchTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
-            
+
             buttonStack.heightAnchor.constraint(equalToConstant: 50),
             buttonStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             buttonStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
             buttonStack.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 18),
-            
+
             textfiledSubViewIcon.widthAnchor.constraint(equalToConstant: 16),
             textfiledSubViewIcon.heightAnchor.constraint(equalToConstant: 16),
             textfiledSubViewIcon.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
             textfiledSubViewIcon.leadingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: -24),
-            
+
             phoneLabel.centerXAnchor.constraint(equalTo: phonesButton.centerXAnchor),
             headphonesLabel.centerXAnchor.constraint(equalTo: headPhonesButton.centerXAnchor),
             gameslabel.centerXAnchor.constraint(equalTo: gamesButton.centerXAnchor),
@@ -98,7 +98,7 @@ class SelectCategoryView: UITableViewHeaderFooterView {
             carsLabel.topAnchor.constraint(equalTo: buttonStack.bottomAnchor),
             furniturelabel.topAnchor.constraint(equalTo: buttonStack.bottomAnchor),
             kidsLabel.topAnchor.constraint(equalTo: buttonStack.bottomAnchor),
-            
+
         ]
         NSLayoutConstraint.activate(constrains)
     }
@@ -108,7 +108,6 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
-        searchTextField.delegate = self
     }
      
     required init?(coder: NSCoder) {
@@ -116,11 +115,3 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     }
 }
 
-extension SelectCategoryView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    
-}

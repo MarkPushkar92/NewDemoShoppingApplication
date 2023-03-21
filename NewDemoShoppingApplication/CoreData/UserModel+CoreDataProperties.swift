@@ -20,7 +20,7 @@ extension UserModel {
     @NSManaged public var lastName: String
     @NSManaged public var email: String
     @NSManaged public var password: String
-    @NSManaged public var image: Data
+    @NSManaged public var image: Data?
     
 }
 

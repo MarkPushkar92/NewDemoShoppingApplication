@@ -87,6 +87,11 @@ private extension ProfileViewController {
       
         ]
         NSLayoutConstraint.activate(constraints)
+        
+        if profileViewModel.user?.image != nil {
+            guard let imagedata = profileViewModel.user?.image else { return }
+            headerview.imageView.image = UIImage(data: imagedata )
+        }
     }
 }
 
@@ -186,7 +191,13 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         headerview.imageView.image = image
         headerview.imageView.clipsToBounds = true
         headerview.imageView.contentMode = .scaleAspectFill
+        if let user = profileViewModel.user {
+            user.image = image?.pngData()
+            profileViewModel.coreDataStack?.upDateUser(user: user)
+        }
+       
         tableView.reloadData()
+        
         dismiss(animated: true)
     }
 }

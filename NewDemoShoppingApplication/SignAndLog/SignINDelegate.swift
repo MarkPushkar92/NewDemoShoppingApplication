@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SignINDelegate: AnyObject {
     
@@ -18,8 +19,6 @@ protocol SignINDelegate: AnyObject {
     func createAccount(name: String, lastName: String, email: String, password: String) -> Void
     
     func checkIfNameisComplete(name: String?, lastName: String?) -> Bool
-    
-    func logIn(name: String, password: String)
     
 }
 
@@ -38,7 +37,7 @@ class SignInInspector: SignINDelegate {
     var coreDataStack: CoreDataStack
 
     func checkIfUserExists(email: String) -> Bool {
-        userArray = coreDataStack.fetchTasks().map({
+        userArray = coreDataStack.fetchUsers().map({
             return $0.email
         })
         return userArray.contains(email)
@@ -63,11 +62,9 @@ class SignInInspector: SignINDelegate {
     func createAccount(name: String, lastName: String, email: String, password: String) {
         coreDataStack.createNewUser(name: name, lastName: lastName, email: email, password: password)
     }
-    
-    func logIn(name: String, password: String) {
-        
-    }
 
-    
-    
 }
+
+
+
+

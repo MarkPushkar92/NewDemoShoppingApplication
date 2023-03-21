@@ -44,7 +44,7 @@ class CoreDataStack {
         return persistentContainer.newBackgroundContext()
     }
     
-    func fetchTasks() -> [UserModel] {
+    func fetchUsers() -> [UserModel] {
         let request: NSFetchRequest<UserModel> = UserModel.fetchRequest()
         do {
             return try viewContext.fetch(request)
@@ -69,6 +69,15 @@ class CoreDataStack {
         save(context: context)
     }
     
+    func upDateUser(user: UserModel) {
+        let context = persistentContainer.viewContext
+        for i in fetchUsers() {
+            if i.email == user.email {
+                i.setValue(user.image, forKey: "image")
+                save(context: context)
+            }
+        }
+    }
     
     private func save(context: NSManagedObjectContext) {
         guard context.hasChanges else { return }

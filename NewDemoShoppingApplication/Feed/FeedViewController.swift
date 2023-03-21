@@ -19,6 +19,24 @@ class FeedViewController: UIViewController {
     private var latestDeals = [Latest]()
 
     private var flashSale = [FlashSale]()
+    
+    //MARK: Search properties and func
+        
+    private var timer: Timer?
+    
+    private lazy var resultsController = ResultsVC()
+
+    private lazy var searchController = UISearchController(searchResultsController: resultsController)
+    
+    @objc private func handleTapOnSearch() {
+        searchController.searchBar.placeholder = "What are you looking for?"
+        navigationItem.searchController = searchController
+        navigationItem.searchController?.searchBar.isHidden = false
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        headerview.searchTextField.isHidden = true
+    }
+
     //MARK: UI props
     
     private lazy var tableView: UITableView = {
@@ -40,7 +58,6 @@ class FeedViewController: UIViewController {
     
     @objc private func headerButtonTapped(button: CustomButton) {
         print("hi circle button")
-        
     }
     
     private func getData() {
@@ -80,7 +97,6 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .cyan
         setupViews()
         getData()
-        
     }
     
     init(feedViewModel: FeedViewModel) {
@@ -97,11 +113,9 @@ class FeedViewController: UIViewController {
 
 }
 
-
-
 //MARK: EXTENSIONS
 
-private extension FeedViewController {
+ extension FeedViewController: UIGestureRecognizerDelegate {
     func setupViews() {
         tableView.separatorStyle = .none
         view.addSubview(tableView)
@@ -115,11 +129,19 @@ private extension FeedViewController {
         ]
         NSLayoutConstraint.activate(constraints)
         setupNavigation()
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnSearch))
+        tapRecognizer.delegate = self
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        headerview.searchTextField.addGestureRecognizer(tapRecognizer)
     }
     
     
+    
+    
+    
 }
-
 
 extension FeedViewController: UITableViewDataSource {
     
@@ -177,8 +199,24 @@ extension FeedViewController: UITableViewDelegate {
     }
 }
 
+extension FeedViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+            self.feedViewModel.networking.fetchSearchWords { searched in
+                guard let searched = searched else { return }
+                self.resultsController.searchedWords = searched.words.filter{ $0.contains(searchText)
+                }
+                self.resultsController.tableView.reloadData()
+            }
+        })
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        navigationItem.searchController?.searchBar.isHidden = true
+        headerview.searchTextField.isHidden = false
 
+    }
+}
 
-
-
-  

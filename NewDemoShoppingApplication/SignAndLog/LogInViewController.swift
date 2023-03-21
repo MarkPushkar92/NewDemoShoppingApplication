@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        users = delegate.coreDataStack.fetchTasks()
+        users = delegate.coreDataStack.fetchUsers()
 
     }
 
@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
         for user in users {
             if logInView.firstName.text == user.name && logInView.password.text == user.password  {
                 userIsFound = true
-                self.coordinator?.goToProfile()
+                self.coordinator?.goToProfile(user: user)
             }
         }
         

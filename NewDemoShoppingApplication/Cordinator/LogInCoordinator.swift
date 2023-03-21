@@ -13,6 +13,7 @@ class LogInCoordinator: Coordinator {
     let navigation: UINavigationController
     let factory: ControllerFactory
     let signInDelegate: SignINDelegate
+    let coreDataStack: CoreDataStack
 
     private lazy var profile = {
         factory.makeProfile()
@@ -21,7 +22,8 @@ class LogInCoordinator: Coordinator {
     init(navigation: UINavigationController,factory: ControllerFactory, coreDataStack: CoreDataStack) {
         self.navigation = navigation
         self.factory = factory
-        self.signInDelegate = SignInInspector(stack: coreDataStack)
+        self.coreDataStack = coreDataStack
+        self.signInDelegate = SignInInspector(stack: self.coreDataStack)
     }
     
     func start() {
@@ -30,7 +32,7 @@ class LogInCoordinator: Coordinator {
         navigation.pushViewController(logInVC, animated: true)
     }
     
-    func goToProfile() {
+    func goToProfile(user: UserModel?) {
         
         profile.viewModel.logOutt = {
             self.navigation.popToRootViewController(animated: true)
@@ -40,6 +42,8 @@ class LogInCoordinator: Coordinator {
             print("hi")
         }
         
+        profile.viewModel.coreDataStack = coreDataStack
+        profile.viewModel.user = user
         navigation.pushViewController(profile.controller, animated: true)
         navigation.tabBarController?.tabBar.isHidden = false
     }

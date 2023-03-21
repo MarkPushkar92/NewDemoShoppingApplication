@@ -11,15 +11,21 @@ class NetworkFetcherService {
     
     private let networkDataFetcher = DataFetcher()
     
-    func fetchSale(completion: @escaping (Sale?) -> Void) {
+    private func fetchSale(completion: @escaping (Sale?) -> Void) {
         let sale = "https://run.mocky.io/v3/a9ceeb6e-416d-4352-bde6-2203416576ac"
         networkDataFetcher.fetchData(urlString: sale, response: completion)
     }
     
-    func fetchLatest(completion: @escaping (LatestList?) -> Void) {
+    private func fetchLatest(completion: @escaping (LatestList?) -> Void) {
         
         let latest = "https://run.mocky.io/v3/cc0071a1-f06e-48fa-9e90-b1c2a61eaca7"
         networkDataFetcher.fetchData(urlString: latest, response: completion)
+    }
+    
+    func fetchSearchWords(completion: @escaping (SearchWords?) -> Void) {
+        
+        let searchWords = "https://run.mocky.io/v3/4c9cd822-9479-4509-803d-63197e5a9e19"
+        networkDataFetcher.fetchData(urlString: searchWords, response: completion)
     }
     
     

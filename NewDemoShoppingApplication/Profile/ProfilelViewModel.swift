@@ -14,6 +14,10 @@ protocol ProfileOutput {
 
 final class ProfilelViewModel: ProfileOutput {
     
+    var user: UserModel?
+    
+    var coreDataStack: CoreDataStack?
+    
     var coordinator: LogInCoordinator?
     
     var moduleTitle: String {

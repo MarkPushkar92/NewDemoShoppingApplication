@@ -44,3 +44,9 @@ struct FlashSale: Codable {
         case imageURL = "image_url"
     }
 }
+
+
+// MARK: - SearchWords
+struct SearchWords: Codable {
+    let words: [String]
+}
