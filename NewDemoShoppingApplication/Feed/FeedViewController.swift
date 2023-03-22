@@ -97,6 +97,8 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .cyan
         setupViews()
         getData()
+        
+
     }
     
     init(feedViewModel: FeedViewModel) {
@@ -136,11 +138,6 @@ class FeedViewController: UIViewController {
         tapRecognizer.numberOfTouchesRequired = 1
         headerview.searchTextField.addGestureRecognizer(tapRecognizer)
     }
-    
-    
-    
-    
-    
 }
 
 extension FeedViewController: UITableViewDataSource {
@@ -155,17 +152,20 @@ extension FeedViewController: UITableViewDataSource {
             cell.latestLabel.text = "Latest"
             cell.latest = latestDeals
             cell.selectionStyle = .none
+            cell.OnTap = feedViewModel.onTapShowNextModule
             return cell
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDLatest, for: indexPath) as! LatestTableCell
             cell.latest = latestDeals
             cell.latestLabel.text = "Brands"
             cell.selectionStyle = .none
+            cell.OnTap = feedViewModel.onTapShowNextModule
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDSale, for: indexPath) as! FlashSaleTableCell
             cell.flashSale = flashSale
             cell.selectionStyle = .none
+            cell.OnTap = feedViewModel.onTapShowNextModule
             return cell
         }
     }

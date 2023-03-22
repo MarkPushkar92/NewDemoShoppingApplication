@@ -12,16 +12,24 @@ import UIKit
 protocol ControllerFactory {
     func makeProfile() -> (viewModel: ProfilelViewModel, controller: ProfileViewController)
     func makeFeed() -> (viewModel: FeedViewModel, controller: FeedViewController)
+    func makeDetails() -> (viewModel: DetailsViewModel, controller: DetailsViewController)
 
 
 }
 
 struct ControllerFactoryImpl: ControllerFactory {
     
+    func makeDetails() -> (viewModel: DetailsViewModel, controller: DetailsViewController) {
+        let viewModel = DetailsViewModel()
+        let details = DetailsViewController(detailsViewModel: viewModel)
+        return (viewModel, details)
+    }
+    
+    
     func makeProfile() -> (viewModel: ProfilelViewModel, controller: ProfileViewController) {
         let viewModel = ProfilelViewModel()
-        let prifile = ProfileViewController(profileViewModel: viewModel)
-        return (viewModel, prifile)
+        let profile = ProfileViewController(profileViewModel: viewModel)
+        return (viewModel, profile)
     }
     
     func makeFeed() -> (viewModel: FeedViewModel, controller: FeedViewController) {

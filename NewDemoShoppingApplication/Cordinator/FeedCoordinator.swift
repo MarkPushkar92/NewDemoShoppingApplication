@@ -15,6 +15,10 @@ class FeedCoordinator: Coordinator {
     private lazy var feed = {
         factory.makeFeed()
     }()
+    
+    private lazy var details = {
+        factory.makeDetails()
+    }()
         
     init(navigation: UINavigationController,factory: ControllerFactory) {
         self.navigation = navigation
@@ -22,18 +26,19 @@ class FeedCoordinator: Coordinator {
     }
     
     func start() {
+        feed.viewModel.onShowNext = {
+            self.goToDetails()
+        }
         let feedVC = feed.controller
         feedVC.coordinator = self
         navigation.pushViewController(feedVC, animated: true)
     }
     
-    func goToFeed() {
+    private func goToDetails() {
+        let detailsVC = self.details.controller
+        detailsVC.coordinator = self
+        self.navigation.pushViewController(detailsVC, animated: true)
 
-        feed.viewModel.onShowNext = {
-            print("hi")
-        }
-        
-   
     }
     
    

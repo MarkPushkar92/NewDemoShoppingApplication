@@ -28,25 +28,24 @@ class NetworkFetcherService {
         networkDataFetcher.fetchData(urlString: searchWords, response: completion)
     }
     
+    func fetchDetails(completion: @escaping (ProductDetails?) -> Void) {
+        
+        let detailsURL = "https://run.mocky.io/v3/f7f99d04-4971-45d5-92e0-70333383c239"
+        networkDataFetcher.fetchData(urlString: detailsURL, response: completion)
+    }
     
     func getData(completion: @escaping ([Latest], [FlashSale]) -> Void) {
-        
         var latestDeals = [Latest]()
         var flashSale = [FlashSale]()
-
         fetchLatest { latest in
             guard let latest = latest else {return}
             latestDeals = latest.latest
             completion(latestDeals, flashSale)
-
         }
         fetchSale { sale in
             guard let sale = sale else {return}
             flashSale = sale.flashSale
             completion(latestDeals, flashSale)
-
         }
-     
     }
-    
 }

@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 
         window.rootViewController = mainCoordinator.tabBarController
-        mainCoordinator.tabBarController.selectedIndex = 4
+        mainCoordinator.tabBarController.selectedIndex = 0
         window.makeKeyAndVisible()
     
        
