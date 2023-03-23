@@ -44,20 +44,12 @@ class DetailsViewController: UIViewController {
         }()
         detailsView.totalPriceLabel.text = priceStr
     }
-    
-    
-   
+       
     //MARK: Init and LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        detailsViewModel.networking.fetchDetails { details in
-            self.productDetails = details
-            self.detailsView.productDetails = self.productDetails
-            self.detailsView.updateViewWithData()
-
-        }
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = .black
 
@@ -81,19 +73,20 @@ extension DetailsViewController {
     func setupViews() {
         detailsView.minusButton.addTarget(self, action: #selector(minusButtonPressed), for: .touchUpInside)
         detailsView.plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
-
+        view.backgroundColor = UIColor(red: 0.094, green: 0.09, blue: 0.149, alpha: 1)
         view.addSubview(detailsView)
         let constraints = [
         
             detailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             detailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             detailsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            detailsView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            detailsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         
         ]
         NSLayoutConstraint.activate(constraints)
         
-
+        detailsView.productDetails = productDetails
+        detailsView.updateViewWithData()
               
    }
    

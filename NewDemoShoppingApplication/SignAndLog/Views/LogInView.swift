@@ -40,6 +40,7 @@ class LogInView: UIView {
         txtfld.layer.cornerRadius = 10
         txtfld.font = UIFont(name: "Montserrat-Regular", size: 16)
         txtfld.textAlignment = .center
+        txtfld.isSecureTextEntry = true
         return txtfld
     }()
     

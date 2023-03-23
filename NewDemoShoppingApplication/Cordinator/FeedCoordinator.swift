@@ -25,22 +25,24 @@ class FeedCoordinator: Coordinator {
         self.factory = factory
     }
     
+    
     func start() {
-        feed.viewModel.onShowNext = {
-            self.goToDetails()
+        feed.viewModel.onShowNext = { prodDetails in
+            self.goToDetails(details: prodDetails)
         }
+         
         let feedVC = feed.controller
         feedVC.coordinator = self
         navigation.pushViewController(feedVC, animated: true)
     }
     
-    private func goToDetails() {
+    private func goToDetails(details: ProductDetails?) {
         let detailsVC = self.details.controller
+        detailsVC.productDetails = details
         detailsVC.coordinator = self
         self.navigation.pushViewController(detailsVC, animated: true)
 
     }
-    
    
 
     

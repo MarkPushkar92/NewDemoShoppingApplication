@@ -27,11 +27,13 @@ final class FeedViewModel: FeedOutput {
     }
     
     // интерфейс для отправки данных в координатор
-    var onShowNext: (() -> Void)?
+    var onShowNext: ((ProductDetails?) -> Void)?
 
     // интерфейс для приема данных от ViewController
     lazy var onTapShowNextModule: () -> Void = { [weak self] in
-        self?.onShowNext?()
+        self?.networking.fetchDetails { details in
+            self?.onShowNext?(details)
+        }
     }
     
 

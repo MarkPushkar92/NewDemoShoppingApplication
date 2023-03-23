@@ -106,7 +106,7 @@ class DetailsView: UIView {
         let view = UIView()
         view.toAutoLayout()
         view.backgroundColor = UIColor(red: 0.094, green: 0.09, blue: 0.149, alpha: 1)
-        view.layer.masksToBounds = true
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.cornerRadius = 30
         return view
     }()
@@ -172,6 +172,15 @@ class DetailsView: UIView {
         return button
     }()
 
+    private let shareButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Faves.Share"), for: .normal)
+        button.layer.cornerRadius = 15
+        button.layer.masksToBounds = true
+        button.toAutoLayout()
+        return button
+    }()
+    
 
     
     private let layout = UICollectionViewFlowLayout()
@@ -186,13 +195,18 @@ class DetailsView: UIView {
         setupCollectionView()
 
         
-        self.addSubviews(image, nameLabel, priceLabel, descrLabel, starImg, ratingLabel, reviewsLabel, colorLabel, colorStack, bottomView, quantityLabel, addtoCartLabel, addtoCartView, addtoCartLabel, totalPriceLabel, plusButton, minusButton )
+        self.addSubviews(image, nameLabel, priceLabel, descrLabel, starImg, ratingLabel, reviewsLabel, colorLabel, colorStack, bottomView, quantityLabel, addtoCartLabel, addtoCartView, addtoCartLabel, totalPriceLabel, plusButton, minusButton, shareButton )
         let constrains = [
             
             image.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             image.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             image.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             image.heightAnchor.constraint(equalToConstant: 230),
+            
+            shareButton.heightAnchor.constraint(equalToConstant: 75),
+            shareButton.widthAnchor.constraint(equalToConstant: 30),
+            shareButton.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: -24),
+            shareButton.topAnchor.constraint(equalTo: image.topAnchor, constant: 100),
             
             nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             nameLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
@@ -275,6 +289,7 @@ class DetailsView: UIView {
             collectionView.heightAnchor.constraint(equalToConstant: 100),
         ]
         NSLayoutConstraint.activate(constrains)
+        
     }
     
     func updateViewWithData() {
@@ -370,6 +385,8 @@ extension DetailsView: UICollectionViewDelegateFlowLayout {
         if let imageData = productDetails?.imageUrls[indexPath.row] {
             image.load(url: URL(string: imageData) ?? URL(string: "https://img.ibxk.com.br/2020/09/23/23104013057475.jpg?w=1120&h=420&mode=crop&scale=both")!)
         }
+        
+        
     }
 }
 

@@ -151,9 +151,6 @@ class SignInView: UIView {
             alreadyHaveLabel.topAnchor.constraint(equalTo: singInButton.bottomAnchor, constant: 17),
             alreadyHaveLabel.leadingAnchor.constraint(equalTo: singInButton.leadingAnchor),
             
-//            logInLabel.topAnchor.constraint(equalTo: alreadyHaveLabel.topAnchor),
-//            logInLabel.leadingAnchor.constraint(equalTo: alreadyHaveLabel.trailingAnchor, constant: 9),
-            
             logInLabel.centerYAnchor.constraint(equalTo: alreadyHaveLabel.centerYAnchor),
             logInLabel.leadingAnchor.constraint(equalTo: alreadyHaveLabel.trailingAnchor, constant: 9),
             
