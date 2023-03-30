@@ -17,6 +17,9 @@ class ProfileCoordinator: Coordinator {
     private lazy var profile = {
         factory.makeProfile()
     }()
+    
+    var logOutt: (() -> Void)?
+
         
     init(navigation: UINavigationController,factory: ControllerFactory, coreDataStack: CoreDataStack) {
         self.navigation = navigation
@@ -26,15 +29,8 @@ class ProfileCoordinator: Coordinator {
     
     func start() {
         navigation.pushViewController(profile.controller, animated: true)
-        
-        profile.viewModel.logOutt = {
-            self.navigation.popToRootViewController(animated: true)
-        }
-        profile.viewModel.onShowNext = {
-            print("hi")
-        }
+        profile.viewModel.logOutt = logOutt
         profile.viewModel.coreDataStack = coreDataStack
-        
     }
     
 }

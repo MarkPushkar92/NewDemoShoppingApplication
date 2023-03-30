@@ -74,7 +74,7 @@ private extension ProfileViewController {
     func setupViews() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: returnButton)
         returnButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
-        title = profileViewModel.moduleTitle
+        navigationItem.title = profileViewModel.moduleTitle
         view.backgroundColor = UIColor(red: 0.98, green: 0.976, blue: 1, alpha: 1)
         tableView.backgroundColor = UIColor(red: 0.98, green: 0.976, blue: 1, alpha: 1)
         view.addSubview(tableView)
@@ -196,9 +196,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             user.image = image?.pngData()
             profileViewModel.coreDataStack?.upDateUser(user: user)
         }
-       
         tableView.reloadData()
-        
         dismiss(animated: true)
     }
 }

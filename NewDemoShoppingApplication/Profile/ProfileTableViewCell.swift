@@ -46,18 +46,14 @@ class ProfileTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpViews()
-
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     func setUpViews() {
         self.backgroundColor = UIColor(red: 0.98, green: 0.976, blue: 1, alpha: 1)
-
         self.addSubviews(image, imageChevron, titleLabel, balanceLabel)
         let constraints = [
             image.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
