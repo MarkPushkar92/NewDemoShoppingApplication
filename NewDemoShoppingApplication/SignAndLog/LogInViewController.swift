@@ -78,7 +78,8 @@ private extension LoginViewController {
     func setupViews() {
         view.backgroundColor = .white
 
-
+        logInView.firstName.delegate = self
+        logInView.password.delegate = self
         logInView.loginButton.addTarget(self, action: #selector(logInbuttonTapped), for: .touchUpInside)
         view.addSubview(logInView)
                 let constraints = [
@@ -92,8 +93,9 @@ private extension LoginViewController {
 
 }
 
-
-
-
-
-
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}

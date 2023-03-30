@@ -110,6 +110,9 @@ class SignInViewController: UIViewController {
 private extension SignInViewController {
     
     func setupViews() {
+        signInView.email.delegate = self
+        signInView.firstName.delegate = self
+        signInView.lastName.delegate = self
         view.backgroundColor = .white
         signInView.logInLabel.addTarget(self, action: #selector(logInbuttonTapped), for: .touchUpInside)
         signInView.singInButton.addTarget(self, action: #selector(signInbuttonTapped), for: .touchUpInside)
@@ -127,3 +130,9 @@ private extension SignInViewController {
 }
 
 
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
