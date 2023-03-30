@@ -119,9 +119,7 @@ class SignInView: UIView {
     private func setupViews() {
         self.toAutoLayout()
         self.addSubviews(firstName, lastName, email, singInButton, singInLabel, alreadyHaveLabel, logInLabel, googleLabel, appleLabel, appleImage, googleImage)
-        [firstName, lastName, email].forEach {
-            $0.addDoneButton(title: "Done", target: self, selector:  #selector(tapDone(sender:)))
-        }
+
         
         let constraints = [
            
@@ -177,9 +175,6 @@ class SignInView: UIView {
     
     }
     
-    @objc private func tapDone(sender: Any) {
-        self.endEditing(true)
-    }
     
     init() {
         super.init(frame: .zero)

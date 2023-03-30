@@ -65,9 +65,7 @@ class LogInView: UIView {
     private func setupViews() {
         self.toAutoLayout()
         self.addSubviews(firstName, welcomeBackLabel, password, loginButton, isSecureButton)
-        [firstName, password].forEach {
-            $0.addDoneButton(title: "Done", target: self, selector:  #selector(tapDone(sender:)))
-        }
+
         isSecureButton.addTarget(self, action: #selector(isSecurePassword), for: .touchUpInside)
         
         let constraints = [
@@ -102,9 +100,6 @@ class LogInView: UIView {
     
     }
     
-    @objc private func tapDone(sender: Any) {
-        self.endEditing(true)
-    }
     
     @objc private func isSecurePassword(sender: Any) {
         if password.isSecureTextEntry {
