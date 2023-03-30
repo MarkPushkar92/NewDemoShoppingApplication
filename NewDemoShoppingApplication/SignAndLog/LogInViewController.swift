@@ -11,8 +11,8 @@ import UIKit
 class LoginViewController: UIViewController {
 
 //MARK: properties
-
-    weak var coordinator: LogInCoordinator?
+    
+    weak var coordinator: FeedCoordinator?
 
     private let logInView = LogInView()
 
@@ -47,16 +47,13 @@ class LoginViewController: UIViewController {
     }
 
     @objc private func logInbuttonTapped() {
-        
         var userIsFound = false
-
         for user in users {
             if logInView.firstName.text == user.name && logInView.password.text == user.password  {
                 userIsFound = true
-                self.coordinator?.goToProfile(user: user)
+                SignInInspector.currentUser = user
             }
         }
-        
         if userIsFound == false {
     
             let alert = UIAlertController(title: "Try again", message: "Wrong name, password or used doesn't exist", preferredStyle: .alert)
@@ -64,8 +61,10 @@ class LoginViewController: UIViewController {
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
             
+        } else {
+            self.coordinator?.goToFeed()
+            
         }
-        
         
     }
 

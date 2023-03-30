@@ -13,8 +13,6 @@ protocol ControllerFactory {
     func makeProfile() -> (viewModel: ProfilelViewModel, controller: ProfileViewController)
     func makeFeed() -> (viewModel: FeedViewModel, controller: FeedViewController)
     func makeDetails() -> (viewModel: DetailsViewModel, controller: DetailsViewController)
-
-
 }
 
 struct ControllerFactoryImpl: ControllerFactory {
@@ -24,7 +22,6 @@ struct ControllerFactoryImpl: ControllerFactory {
         let details = DetailsViewController(detailsViewModel: viewModel)
         return (viewModel, details)
     }
-    
     
     func makeProfile() -> (viewModel: ProfilelViewModel, controller: ProfileViewController) {
         let viewModel = ProfilelViewModel()

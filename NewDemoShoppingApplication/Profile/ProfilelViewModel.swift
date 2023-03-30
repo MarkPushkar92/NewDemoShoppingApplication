@@ -18,7 +18,7 @@ final class ProfilelViewModel: ProfileOutput {
     
     var coreDataStack: CoreDataStack?
     
-    var coordinator: LogInCoordinator?
+    var coordinator: ProfileCoordinator?
     
     var moduleTitle: String {
         return "Profile"

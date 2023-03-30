@@ -23,6 +23,8 @@ protocol SignINDelegate: AnyObject {
 }
 
 class SignInInspector: SignINDelegate {
+    
+    static var currentUser: UserModel?
   
     private var userArray = [String]()
     

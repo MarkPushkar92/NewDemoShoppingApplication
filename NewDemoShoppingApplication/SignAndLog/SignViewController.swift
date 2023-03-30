@@ -11,7 +11,7 @@ class SignInViewController: UIViewController {
 
 //MARK: properties
 
-    weak var coordinator: LogInCoordinator?
+    weak var coordinator: FeedCoordinator?
     
     private let signInView = SignInView()
     
@@ -73,7 +73,7 @@ class SignInViewController: UIViewController {
                                 guard let lastName = lastName else {return}
                                 guard let password = password else {return}
                                 self.delegate.createAccount(name: name, lastName: lastName, email: email, password: password)
-                                self.coordinator?.goToLogIN()
+                                self.coordinator?.goToFeed()
                             } else {
                                 self.showAlert(title: "Password mismatch", actiontitle: "Try again", message: "try again", closure: nil)
                             }
@@ -124,11 +124,8 @@ private extension SignInViewController {
                     signInView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 ]
                 NSLayoutConstraint.activate(constraints)
-
    }
-    
 }
-
 
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
