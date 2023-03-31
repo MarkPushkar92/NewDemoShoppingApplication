@@ -14,9 +14,9 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     let searchTextField: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "What are you looking for?"
-        textfield.backgroundColor = .white
         textfield.textAlignment = .center
-        textfield.textColor = UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 0.5)
+        textfield.backgroundColor = .white
+        textfield.textColor = .gray
         textfield.clipsToBounds = false
         textfield.layer.cornerRadius = 15
         textfield.font = UIFont(name: "Montserrat-Regular", size: 12)
@@ -73,7 +73,7 @@ class SelectCategoryView: UITableViewHeaderFooterView {
             searchTextField.widthAnchor.constraint(equalToConstant: 300),
             searchTextField.heightAnchor.constraint(equalToConstant: 34),
             searchTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            searchTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            searchTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 25),
 
             buttonStack.heightAnchor.constraint(equalToConstant: 50),
             buttonStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),

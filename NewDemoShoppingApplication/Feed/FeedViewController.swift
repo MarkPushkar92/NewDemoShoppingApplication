@@ -26,17 +26,6 @@ class FeedViewController: UIViewController {
     
     private lazy var resultsController = ResultsVC()
 
-    private lazy var searchController = UISearchController(searchResultsController: resultsController)
-    
-    @objc private func handleTapOnSearch() {
-        searchController.searchBar.placeholder = "What are you looking for?"
-        navigationItem.searchController = searchController
-        navigationItem.searchController?.searchBar.isHidden = false
-        searchController.searchBar.delegate = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        headerview.searchTextField.isHidden = true
-    }
-
     //MARK: UI props
     
     private lazy var tableView: UITableView = {
@@ -118,6 +107,8 @@ class FeedViewController: UIViewController {
 
  extension FeedViewController: UIGestureRecognizerDelegate {
     func setupViews() {
+        headerview.searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        headerview.searchTextField.delegate = self
         tableView.separatorStyle = .none
         view.addSubview(tableView)
         view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
@@ -130,12 +121,6 @@ class FeedViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
         setupNavigation()
-        
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnSearch))
-        tapRecognizer.delegate = self
-        tapRecognizer.numberOfTapsRequired = 1
-        tapRecognizer.numberOfTouchesRequired = 1
-        headerview.searchTextField.addGestureRecognizer(tapRecognizer)
     }
 }
 
@@ -198,24 +183,33 @@ extension FeedViewController: UITableViewDelegate {
     }
 }
 
-extension FeedViewController: UISearchBarDelegate {
+extension FeedViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        if let presentationController = resultsController.presentationController as? UISheetPresentationController {
+                presentationController.detents = [.medium()]
+        }
+        
+        
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
-            self.feedViewModel.networking.fetchSearchWords { searched in
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
+            if textField.text?.isEmpty == false {
+                self.navigationController?.present(self.resultsController, animated: true)
+            }
+
+            self.feedViewModel.networking.fetchSearchWords { [self] searched in
                 guard let searched = searched else { return }
-                self.resultsController.searchedWords = searched.words.filter{ $0.contains(searchText)
+                self.resultsController.searchedWords = searched.words.filter{ $0.contains(textField.text ?? "")
                 }
                 self.resultsController.tableView.reloadData()
             }
         })
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        navigationItem.searchController?.searchBar.isHidden = true
-        headerview.searchTextField.isHidden = false
-
-    }
+    
 }
-

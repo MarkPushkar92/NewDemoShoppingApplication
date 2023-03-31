@@ -19,7 +19,7 @@ class LatestTableCell: UITableViewCell {
         let label = UILabel()
         label.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         label.textColor = .black
-        label.font = UIFont(name: "Montserrat-Bold", size: 25)
+        label.font = UIFont(name: "Montserrat-Bold", size: 22)
         label.textAlignment = .center
         label.text = "Latest"
         label.toAutoLayout()
@@ -30,7 +30,7 @@ class LatestTableCell: UITableViewCell {
         var view = UILabel()
         view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         view.textColor = .gray
-        view.font = UIFont(name: "Montserrat-Regular", size: 15)
+        view.font = UIFont(name: "Montserrat-Medium", size: 15)
         view.textAlignment = .center
         view.text = "View all"
         view.toAutoLayout()
