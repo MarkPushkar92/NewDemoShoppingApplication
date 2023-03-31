@@ -53,6 +53,7 @@ class FlashSaleTableCell: UITableViewCell {
     }
     
     private func setupViews() {
+        collectionView.alwaysBounceHorizontal = true
         layout.scrollDirection = .horizontal
         collectionView.toAutoLayout()
         collectionView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)

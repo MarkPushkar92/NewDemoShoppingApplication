@@ -276,6 +276,7 @@ class DetailsView: UIView {
     }
     
     private func setupCollectionView() {
+        collectionView.alwaysBounceHorizontal = true
         self.addSubview(collectionView)
         layout.scrollDirection = .horizontal
         collectionView.toAutoLayout()
@@ -284,8 +285,8 @@ class DetailsView: UIView {
         collectionView.delegate = self
         let constrains = [
             collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 230),
-            collectionView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 75),
-            collectionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -75),
+            collectionView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            collectionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             collectionView.heightAnchor.constraint(equalToConstant: 100),
         ]
         NSLayoutConstraint.activate(constrains)

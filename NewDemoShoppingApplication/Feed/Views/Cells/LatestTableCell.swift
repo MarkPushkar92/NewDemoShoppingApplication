@@ -56,6 +56,7 @@ class LatestTableCell: UITableViewCell {
     
     private func setupViews() {
         layout.scrollDirection = .horizontal
+        collectionView.alwaysBounceHorizontal = true
         collectionView.toAutoLayout()
         collectionView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         collectionView.register(ReusableCollectionCell.self, forCellWithReuseIdentifier: String(describing: ReusableCollectionCell.self))

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class ProfileViewController: UIViewController {
     
@@ -183,7 +184,37 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             imagePicker.delegate = self
             imagePicker.allowsEditing = true
             imagePicker.sourceType = source
-            present(imagePicker, animated: true)
+            
+            let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+               switch photoAuthorizationStatus {
+               case .authorized:
+                   present(imagePicker, animated: true, completion: nil)
+                   print("Access is granted by user")
+               case .notDetermined:
+                   PHPhotoLibrary.requestAuthorization({
+                       (newStatus) in
+                       print("status is \(newStatus)")
+                       if newStatus ==  PHAuthorizationStatus.authorized {
+                           /* do stuff here */
+                           DispatchQueue.main.async {
+                               self.present(imagePicker, animated: true, completion: nil)
+                           }
+                           print("success")
+                       }
+                   })
+                   print("It is not determined until now")
+               case .restricted:
+                   // same same
+                   print("User do not have access to photo album.")
+               case .denied:
+                   // same same
+                   print("User has denied the permission.")
+                   break
+               case .limited:
+                   break
+               @unknown default:
+                   break
+               }
         }
     }
     
