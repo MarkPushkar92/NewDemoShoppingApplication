@@ -21,11 +21,11 @@ class FeedViewController: UIViewController {
     private var flashSale = [FlashSale]()
     
     //MARK: Search properties and func
+    
+    private let resultsTableView = ResultsTableView()
         
     private var timer: Timer?
     
-    private lazy var resultsController = ResultsVC()
-
     //MARK: UI props
     
     private lazy var tableView: UITableView = {
@@ -49,6 +49,10 @@ class FeedViewController: UIViewController {
         print("hi circle button")
     }
     
+    @objc private func removeresultsView() {
+        resultsTableView.isHidden = true
+    }
+    
     private func getData() {
         feedViewModel.networking.getData {  latest, sale in
             if latest.isEmpty || sale.isEmpty {
@@ -62,9 +66,7 @@ class FeedViewController: UIViewController {
     }
     
     private func applyData() {
-        
         DispatchQueue.main.async {
-           
             if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? LatestTableCell {
                cell.collectionView.reloadData()
             }
@@ -75,7 +77,6 @@ class FeedViewController: UIViewController {
                cell.collectionView.reloadData()
             }
             self.tableView.reloadData()
-
         }
     }
     
@@ -86,8 +87,6 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .cyan
         setupViews()
         getData()
-        
-
     }
     
     init(feedViewModel: FeedViewModel) {
@@ -98,8 +97,6 @@ class FeedViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
- 
 
 }
 
@@ -117,10 +114,19 @@ class FeedViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-     
         ]
         NSLayoutConstraint.activate(constraints)
         setupNavigation()
+        
+        // results tableView setup
+        view.addSubview(resultsTableView)
+        resultsTableView.isHidden = true
+        resultsTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        resultsTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        resultsTableView.bottomAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100).isActive = true
+        resultsTableView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        resultsTableView.button.addTarget(self, action: #selector(removeresultsView), for: .touchUpInside)
+
     }
 }
 
@@ -191,25 +197,21 @@ extension FeedViewController: UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         
-        if let presentationController = resultsController.presentationController as? UISheetPresentationController {
-                presentationController.detents = [.medium()]
-        }
-        
+        resultsTableView.isHidden = false
         
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
-            if textField.text?.isEmpty == false {
-                self.navigationController?.present(self.resultsController, animated: true)
-            }
-
+            
             self.feedViewModel.networking.fetchSearchWords { [self] searched in
                 guard let searched = searched else { return }
-                self.resultsController.searchedWords = searched.words.filter{ $0.contains(textField.text ?? "")
+                self.resultsTableView.searchedWords = searched.words.filter{ $0.contains(textField.text ?? "")
                 }
-                self.resultsController.tableView.reloadData()
+                self.resultsTableView.tableView.reloadData()
             }
         })
     }
     
     
 }
+
+

@@ -93,10 +93,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             uploadImage.leadingAnchor.constraint(equalTo: uploadButton.leadingAnchor, constant: 50),
             uploadImage.widthAnchor.constraint(equalToConstant: 20),
             uploadImage.heightAnchor.constraint(equalToConstant: 20),
-            
-
-                
-
 
            ]
 
