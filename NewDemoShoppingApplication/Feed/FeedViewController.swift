@@ -45,10 +45,7 @@ class FeedViewController: UIViewController {
     
     //MARK: FUNCS
     
-    @objc private func headerButtonTapped(button: CustomButton) {
-        print("hi circle button")
-    }
-    
+  
     @objc private func removeresultsView() {
         resultsTableView.isHidden = true
     }

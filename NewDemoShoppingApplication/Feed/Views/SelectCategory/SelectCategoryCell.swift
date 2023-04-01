@@ -9,10 +9,6 @@ import UIKit
 
 class SelectCategoryCell: UICollectionViewCell {
     
-//    var button = CustomButton(buttonName: .cars)
-//
-//    var label = CustomLabel(labelName: .cars)
-    
     var button: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
@@ -53,7 +49,6 @@ class SelectCategoryCell: UICollectionViewCell {
             label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             button.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             label.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 5)
-
             
         ]
         NSLayoutConstraint.activate(constrains)

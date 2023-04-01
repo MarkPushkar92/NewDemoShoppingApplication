@@ -34,7 +34,7 @@ class DetailsView: UIView {
     
     private let priceLabel: UILabel = {
         var view = UILabel()
-        view.font = UIFont(name: "Montserrat-Medium", size: 18)
+        view.font = UIFont(name: "Montserrat-Medium", size: 16)
         view.text = ""
         view.numberOfLines = 0
         view.lineBreakMode = .byWordWrapping
@@ -113,7 +113,7 @@ class DetailsView: UIView {
     
     private let quantityLabel: UILabel = {
         var view = UILabel()
-        view.font = UIFont(name: "Montserrat-Regular", size: 12)
+        view.font = UIFont(name: "Montserrat-Regular", size: 10)
         view.text = "Quantity:"
         view.textColor = .lightGray
         view.numberOfLines = 0
@@ -175,8 +175,10 @@ class DetailsView: UIView {
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "Faves.Share"), for: .normal)
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
+        button.layer.borderColor = UIColor(red: 0.094, green: 0.09, blue: 0.149, alpha: 1).cgColor
+        button.layer.borderWidth = 1
         button.toAutoLayout()
         return button
     }()
@@ -199,14 +201,14 @@ class DetailsView: UIView {
         let constrains = [
             
             image.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            image.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            image.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            image.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
+            image.topAnchor.constraint(equalTo: self.topAnchor),
             image.heightAnchor.constraint(equalToConstant: 230),
             
             shareButton.heightAnchor.constraint(equalToConstant: 75),
-            shareButton.widthAnchor.constraint(equalToConstant: 30),
-            shareButton.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: -24),
-            shareButton.topAnchor.constraint(equalTo: image.topAnchor, constant: 100),
+            shareButton.widthAnchor.constraint(equalToConstant: 35),
+            shareButton.centerXAnchor.constraint(equalTo: image.trailingAnchor),
+            shareButton.bottomAnchor.constraint(equalTo: image.bottomAnchor, constant: -40),
             
             nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             nameLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
@@ -257,18 +259,15 @@ class DetailsView: UIView {
             totalPriceLabel.centerYAnchor.constraint(equalTo: addtoCartView.centerYAnchor),
             totalPriceLabel.leadingAnchor.constraint(equalTo: addtoCartView.leadingAnchor, constant: 30),
             
-            minusButton.heightAnchor.constraint(equalToConstant: 20),
-            minusButton.widthAnchor.constraint(equalToConstant: 40),
+            minusButton.heightAnchor.constraint(equalToConstant: 25),
+            minusButton.widthAnchor.constraint(equalToConstant: 45),
             minusButton.bottomAnchor.constraint(equalTo: addtoCartView.bottomAnchor),
             minusButton.leadingAnchor.constraint(equalTo: quantityLabel.leadingAnchor),
             
-            plusButton.heightAnchor.constraint(equalToConstant: 20),
-            plusButton.widthAnchor.constraint(equalToConstant: 40),
+            plusButton.heightAnchor.constraint(equalToConstant: 25),
+            plusButton.widthAnchor.constraint(equalToConstant: 45),
             plusButton.bottomAnchor.constraint(equalTo: addtoCartView.bottomAnchor),
             plusButton.leadingAnchor.constraint(equalTo: minusButton.trailingAnchor, constant: 15),
-            
-        
-
        
         ]
         NSLayoutConstraint.activate(constrains)
@@ -325,7 +324,7 @@ class DetailsView: UIView {
                 view.frame = CGRect(x: 0, y: 0, width: 32, height: 24)
                 view.layer.masksToBounds = true
                 view.layer.cornerRadius = 10
-                view.layer.borderWidth = 2
+                view.layer.borderWidth = 1
                 view.layer.borderColor = UIColor.gray.cgColor
                 return view
             }()
@@ -368,10 +367,22 @@ extension DetailsView: UICollectionViewDataSource {
 
 extension DetailsView: UICollectionViewDelegateFlowLayout {
     
+  
+
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = 90
-        let height: CGFloat = 45
-        return CGSize(width: width, height: height)
+        
+        switch collectionView.indexPathsForSelectedItems?.first {
+         case .some(indexPath):
+            let width: CGFloat = 100
+            let height: CGFloat = 55
+            return CGSize(width: width, height: height)
+         default:
+            let width: CGFloat = 90
+            let height: CGFloat = 45
+            return CGSize(width: width, height: height)
+         }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -385,6 +396,8 @@ extension DetailsView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let imageData = productDetails?.imageUrls[indexPath.row] {
             image.load(url: URL(string: imageData) ?? URL(string: "https://img.ibxk.com.br/2020/09/23/23104013057475.jpg?w=1120&h=420&mode=crop&scale=both")!)
+            collectionView.performBatchUpdates(nil, completion: nil)
+
         }
         
         
