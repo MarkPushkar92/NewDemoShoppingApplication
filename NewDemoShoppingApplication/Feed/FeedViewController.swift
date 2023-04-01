@@ -16,10 +16,6 @@ class FeedViewController: UIViewController {
     
     private let headerview = SelectCategoryView()
     
-    private var latestDeals = [Latest]()
-
-    private var flashSale = [FlashSale]()
-    
     //MARK: Search properties and func
     
     private let resultsTableView = ResultsTableView()
@@ -50,18 +46,6 @@ class FeedViewController: UIViewController {
         resultsTableView.isHidden = true
     }
     
-    private func getData() {
-        feedViewModel.networking.getData {  latest, sale in
-            if latest.isEmpty || sale.isEmpty {
-                print("no data")
-            } else {
-                self.latestDeals = latest
-                self.flashSale = sale
-                self.applyData()
-            }
-        }
-    }
-    
     private func applyData() {
         DispatchQueue.main.async {
             if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? LatestTableCell {
@@ -83,7 +67,9 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .cyan
         setupViews()
-        getData()
+        feedViewModel.getData {
+            self.applyData()
+        }
     }
     
     init(feedViewModel: FeedViewModel) {
@@ -136,20 +122,20 @@ extension FeedViewController: UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDLatest, for: indexPath) as! LatestTableCell
             cell.latestLabel.text = "Latest"
-            cell.latest = latestDeals
+            cell.latest = feedViewModel.latestDeals
             cell.selectionStyle = .none
             cell.OnTap = feedViewModel.onTapShowNextModule
             return cell
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDLatest, for: indexPath) as! LatestTableCell
-            cell.latest = latestDeals
+            cell.latest = feedViewModel.latestDeals
             cell.latestLabel.text = "Brands"
             cell.selectionStyle = .none
             cell.OnTap = feedViewModel.onTapShowNextModule
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDSale, for: indexPath) as! FlashSaleTableCell
-            cell.flashSale = flashSale
+            cell.flashSale = feedViewModel.flashSale
             cell.selectionStyle = .none
             cell.OnTap = feedViewModel.onTapShowNextModule
             return cell
@@ -186,13 +172,10 @@ extension FeedViewController: UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        
         resultsTableView.isHidden = false
-        
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
-            
-            self.feedViewModel.networking.fetchSearchWords { [self] searched in
+            self.feedViewModel.networking.fetchSearchWords { searched in
                 guard let searched = searched else { return }
                 self.resultsTableView.searchedWords = searched.words.filter{ $0.contains(textField.text ?? "")
                 }

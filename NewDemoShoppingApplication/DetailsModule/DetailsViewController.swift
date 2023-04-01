@@ -11,12 +11,9 @@ class DetailsViewController: UIViewController {
     
     weak var coordinator: FeedCoordinator?
     
-    private var detailsViewModel: DetailsViewModel
-    
-    var productDetails: ProductDetails?
-    
+    var detailsViewModel: DetailsViewModel
+        
     private var counter = 1
-    
     
     //MARK: UI props
     
@@ -28,7 +25,7 @@ class DetailsViewController: UIViewController {
     @objc private func minusButtonPressed() {
         counter -= 1
         let priceStr: String = {
-            var str = String((productDetails?.price ?? 0)*counter)
+            var str = String((detailsViewModel.productDetails?.price ?? 0)*counter)
             str.insert("$", at: str.startIndex)
             return str
         }()
@@ -38,7 +35,7 @@ class DetailsViewController: UIViewController {
     @objc private func plusButtonPressed() {
         counter += 1
         let priceStr: String = {
-            var str = String((productDetails?.price ?? 0)*counter)
+            var str = String((detailsViewModel.productDetails?.price ?? 0)*counter)
             str.insert("$", at: str.startIndex)
             return str
         }()
@@ -85,7 +82,7 @@ extension DetailsViewController {
         ]
         NSLayoutConstraint.activate(constraints)
         
-        detailsView.productDetails = productDetails
+        detailsView.productDetails = detailsViewModel.productDetails
         detailsView.updateViewWithData()
               
    }

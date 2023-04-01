@@ -13,6 +13,8 @@ protocol DetailsOutput {
 
 final class DetailsViewModel: DetailsOutput {
     
+    var productDetails: ProductDetails?
+    
     let networking = NetworkFetcherService()
         
     var coordinator: FeedCoordinator?

@@ -55,7 +55,7 @@ class FeedCoordinator: Coordinator {
     
     private func goToDetails(details: ProductDetails?) {
         let detailsVC = self.details.controller
-        detailsVC.productDetails = details
+        detailsVC.detailsViewModel.productDetails = details
         detailsVC.coordinator = self
         self.navigation.pushViewController(detailsVC, animated: true)
     }

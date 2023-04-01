@@ -16,6 +16,22 @@ protocol FeedOutput {
 
 final class FeedViewModel: FeedOutput {
     
+    var latestDeals = [Latest]()
+
+    var flashSale = [FlashSale]()
+    
+    func getData(closure: @escaping () -> Void) {
+        networking.getData {  latest, sale in
+            if latest.isEmpty || sale.isEmpty {
+                print("no data")
+            } else {
+                self.latestDeals = latest
+                self.flashSale = sale
+                closure()
+            }
+        }
+    }
+
     var details: ProductDetails?
     
     let networking = NetworkFetcherService()
