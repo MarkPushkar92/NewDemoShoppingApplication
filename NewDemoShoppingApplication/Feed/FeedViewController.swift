@@ -126,7 +126,6 @@ class FeedViewController: UIViewController {
         resultsTableView.bottomAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100).isActive = true
         resultsTableView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         resultsTableView.button.addTarget(self, action: #selector(removeresultsView), for: .touchUpInside)
-
     }
 }
 
@@ -164,12 +163,6 @@ extension FeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        headerview.phonesButton.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
-        headerview.headPhonesButton.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
-        headerview.gamesButton.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
-        headerview.carsButton.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
-        headerview.furnitureButton.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
-        headerview.kidsButton.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
         return headerview
     }
     
