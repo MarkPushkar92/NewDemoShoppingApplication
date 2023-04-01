@@ -13,7 +13,7 @@ class FlashSaleTableCell: UITableViewCell {
     
     var OnTap: (() -> (Void))?
     
-    var flashSale: [FlashSale] = []
+    var flashSale: [SaleModel] = []
     
     private let flashSaleLabel: UILabel = {
         let label = UILabel()

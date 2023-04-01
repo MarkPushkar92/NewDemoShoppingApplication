@@ -11,7 +11,7 @@ class DetailsView: UIView {
     
     //MARK: UI Properties
         
-    var productDetails: ProductDetails?
+    var productDetails: DetailsModel?
     
     private let image: UIImageView = {
         let image = UIImageView()

@@ -59,10 +59,7 @@ class DetailsViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-
- 
+    } 
 
 }
 
@@ -70,7 +67,7 @@ extension DetailsViewController {
     func setupViews() {
         detailsView.minusButton.addTarget(self, action: #selector(minusButtonPressed), for: .touchUpInside)
         detailsView.plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
-        view.backgroundColor = UIColor(red: 0.094, green: 0.09, blue: 0.149, alpha: 1)
+        view.backgroundColor = .white
         view.addSubview(detailsView)
         let constraints = [
         

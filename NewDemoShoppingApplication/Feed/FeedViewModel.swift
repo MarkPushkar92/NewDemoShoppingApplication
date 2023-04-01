@@ -15,18 +15,24 @@ protocol FeedOutput {
 }
 
 final class FeedViewModel: FeedOutput {
+        
+    var latestModel = [LatestModel]()
     
-    var latestDeals = [Latest]()
-
-    var flashSale = [FlashSale]()
+    var saleModel = [SaleModel]()
     
     func getData(closure: @escaping () -> Void) {
         networking.getData {  latest, sale in
             if latest.isEmpty || sale.isEmpty {
                 print("no data")
             } else {
-                self.latestDeals = latest
-                self.flashSale = sale
+                latest.forEach { item in
+                    let latestItem = LatestModel(latest: item)
+                    self.latestModel.append(latestItem)
+                }
+                sale.forEach { item in
+                    let saleItem = SaleModel(sale: item)
+                    self.saleModel.append(saleItem)
+                }
                 closure()
             }
         }

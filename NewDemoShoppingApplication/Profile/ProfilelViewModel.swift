@@ -10,6 +10,8 @@ import UIKit
 protocol ProfileOutput {
     var moduleTitle: String { get }
     var onTapShowNextModule: () -> Void { get }
+    var coreDataStack: CoreDataStack? { get }
+    var coordinator: ProfileCoordinator? { get }
 }
 
 final class ProfilelViewModel: ProfileOutput {

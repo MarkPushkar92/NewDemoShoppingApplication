@@ -12,8 +12,8 @@ class LatestTableCell: UITableViewCell {
     //MARK: Properties
     
     var OnTap: (() -> (Void))?
-    
-    var latest: [Latest] = []
+        
+    var latest: [LatestModel] = []
     
     let latestLabel: UILabel = {
         let label = UILabel()

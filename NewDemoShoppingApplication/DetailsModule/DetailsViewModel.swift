@@ -7,13 +7,12 @@
 import UIKit
 
 protocol DetailsOutput {
-    
     var onTapShowNextModule: () -> Void { get }
 }
 
 final class DetailsViewModel: DetailsOutput {
     
-    var productDetails: ProductDetails?
+    var productDetails: DetailsModel?
     
     let networking = NetworkFetcherService()
         

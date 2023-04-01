@@ -6,12 +6,12 @@
 //
 
 
+// MARK: - Latest
 
 struct LatestList: Codable {
     let latest: [Latest]
 }
 
-// MARK: - Latest
 struct Latest: Codable {
     let category, name: String
     let price: Int
@@ -46,11 +46,6 @@ struct FlashSale: Codable {
 }
 
 
-// MARK: - SearchWords
-struct SearchWords: Codable {
-    let words: [String]
-}
-
 // MARK: - ProductDetails
 struct ProductDetails: Codable {
     let name, description: String
@@ -65,4 +60,9 @@ struct ProductDetails: Codable {
         case price, colors
         case imageUrls = "image_urls"
     }
+}
+
+// MARK: - SearchWords
+struct SearchWords: Codable {
+    let words: [String]
 }

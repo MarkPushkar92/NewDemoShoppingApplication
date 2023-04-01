@@ -122,20 +122,20 @@ extension FeedViewController: UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDLatest, for: indexPath) as! LatestTableCell
             cell.latestLabel.text = "Latest"
-            cell.latest = feedViewModel.latestDeals
+            cell.latest = feedViewModel.latestModel
             cell.selectionStyle = .none
             cell.OnTap = feedViewModel.onTapShowNextModule
             return cell
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDLatest, for: indexPath) as! LatestTableCell
-            cell.latest = feedViewModel.latestDeals
+            cell.latest = feedViewModel.latestModel
             cell.latestLabel.text = "Brands"
             cell.selectionStyle = .none
             cell.OnTap = feedViewModel.onTapShowNextModule
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDSale, for: indexPath) as! FlashSaleTableCell
-            cell.flashSale = feedViewModel.flashSale
+            cell.flashSale = feedViewModel.saleModel
             cell.selectionStyle = .none
             cell.OnTap = feedViewModel.onTapShowNextModule
             return cell
